@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["fetch"],"macro":["dlsym","syscall"],"struct":["DlsymWeak","ExternWeak"]};

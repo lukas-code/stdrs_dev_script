@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"derive":["Default"],"fn":["default"],"macro":["default_impl"],"trait":["Default"]};

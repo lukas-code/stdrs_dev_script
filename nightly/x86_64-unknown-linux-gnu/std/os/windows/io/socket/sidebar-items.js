@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["last_error"],"struct":["BorrowedSocket","OwnedSocket"],"trait":["AsSocket"]};

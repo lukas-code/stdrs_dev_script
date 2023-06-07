@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["COMPLETE","INCOMPLETE","POISONED","RUNNING","STATE_MASK"],"fn":["wait"],"struct":["Once","OnceState","Waiter","WaiterQueue"],"type":["Masked"]};

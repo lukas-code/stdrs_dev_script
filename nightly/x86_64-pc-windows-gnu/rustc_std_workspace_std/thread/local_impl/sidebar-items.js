@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"macro":["thread_local_inner"],"struct":["Key"]};

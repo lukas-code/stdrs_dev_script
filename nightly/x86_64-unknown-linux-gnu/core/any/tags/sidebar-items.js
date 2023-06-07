@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"struct":["MaybeSizedValue","Ref","Value"],"trait":["MaybeSizedType","Type"]};

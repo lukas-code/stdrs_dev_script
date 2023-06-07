@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["Infallible"],"fn":["identity"],"mod":["num"],"trait":["AsMut","AsRef","FloatToInt","From","Into","TryFrom","TryInto"]};

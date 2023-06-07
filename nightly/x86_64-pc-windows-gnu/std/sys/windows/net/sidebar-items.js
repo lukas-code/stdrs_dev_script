@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["cleanup","cvt","cvt_gai","cvt_r","init","last_error"],"macro":["impl_is_minus_one"],"mod":["netc"],"static":["WSA_CLEANUP"],"struct":["Socket"],"trait":["IsMinusOne"],"type":["wrlen_t"]};

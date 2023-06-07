@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["anon_pipe","read2"],"struct":["AnonPipe"]};

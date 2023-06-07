@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["map_fold","map_try_fold"],"struct":["Map"]};

@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["UTF8_REPLACEMENT_CHARACTER"],"fn":["decode_surrogate","decode_surrogate_pair","is_code_point_boundary","slice_error_fail","slice_unchecked"],"struct":["CodePoint","EncodeWide","Wtf8","Wtf8Buf","Wtf8CodePoints"]};

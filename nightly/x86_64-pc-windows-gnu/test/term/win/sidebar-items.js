@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["GetConsoleScreenBufferInfo","GetStdHandle","SetConsoleTextAttribute","bits_to_color","color_to_bits"],"struct":["CONSOLE_SCREEN_BUFFER_INFO","COORD","SMALL_RECT","WinConsole"],"type":["BOOL","DWORD","HANDLE","SHORT","WORD"]};

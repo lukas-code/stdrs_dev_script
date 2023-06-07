@@ -1,0 +1,125 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Function pointers, like `fn(usize) -&gt; bool`."><title>core::prim_fn - Rust</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-2fcac8296ac587d8.css" id="mainThemeStyle"><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="core" data-themes="" data-resource-suffix="" data-rustdoc-version="1.72.0-nightly (b2b34bd83 2023-06-06)" data-search-js="search-4926e5fc22a5646a.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-8c76f75bfb6bd192.css" data-theme-light-css="light-0f8c037637f9eb3e.css" data-theme-dark-css="dark-1097f8e92a01e3cf.css" data-theme-ayu-css="ayu-614652228113ac93.css" ></div><script src="../../static.files/storage-62ce34ea385b278a.js"></script><script defer src="../../static.files/main-48600a9606eff342.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../static.files/light-0f8c037637f9eb3e.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../static.files/dark-1097f8e92a01e3cf.css"><link rel="stylesheet" href="../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"><script src="/nav.js"></script>
+</head><body class="rustdoc mod"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="logo-container" href="../../core/index.html"><img class="rust-logo" src="../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><h2></h2></nav><nav class="sidebar"><a class="logo-container" href="../../core/index.html"><img class="rust-logo" src="../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><h2 class="location"><a href="#">Module prim_fn</a></h2><div class="sidebar-elems"></div></nav><main><div class="width-limiter"><nav class="sub"><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="main-heading"><h1>Module <a href="../index.html">core</a>::<wbr><a class="mod" href="#">prim_fn</a><button id="copy-path" title="Copy item path to clipboard"><img src="../../static.files/clipboard-7571035ce49a181d.svg" width="19" height="18" alt="Copy item path"></button></h1><span class="out-of-band"><span class="since" title="Stable since Rust version 1.0.0">1.0.0</span> · <a class="srclink" href="../../src/core/primitive_docs.rs.html#1568">source</a> · <button id="toggle-all-docs" title="collapse all docs">[<span>&#x2212;</span>]</button></span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Function pointers, like <code>fn(usize) -&gt; bool</code>.</p>
+<p><em>See also the traits <a href="../ops/function/trait.Fn.html" title="trait core::ops::function::Fn"><code>Fn</code></a>, <a href="../ops/function/trait.FnMut.html" title="trait core::ops::function::FnMut"><code>FnMut</code></a>, and <a href="../ops/function/trait.FnOnce.html" title="trait core::ops::function::FnOnce"><code>FnOnce</code></a>.</em></p>
+<p>Function pointers are pointers that point to <em>code</em>, not data. They can be called
+just like functions. Like references, function pointers are, among other things, assumed to
+not be null, so if you want to pass a function pointer over FFI and be able to accommodate null
+pointers, make your type <a href="../option/index.html#options-and-pointers-nullable-pointers" title="mod core::option"><code>Option&lt;fn()&gt;</code></a>
+with your required signature.</p>
+<h4 id="safety"><a href="#safety">Safety</a></h4>
+<p>Plain function pointers are obtained by casting either plain functions, or closures that don’t
+capture an environment:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">fn </span>add_one(x: usize) -&gt; usize {
+    x + <span class="number">1
+</span>}
+
+<span class="kw">let </span>ptr: <span class="kw">fn</span>(usize) -&gt; usize = add_one;
+<span class="macro">assert_eq!</span>(ptr(<span class="number">5</span>), <span class="number">6</span>);
+
+<span class="kw">let </span>clos: <span class="kw">fn</span>(usize) -&gt; usize = |x| x + <span class="number">5</span>;
+<span class="macro">assert_eq!</span>(clos(<span class="number">5</span>), <span class="number">10</span>);</code></pre><a class="test-arrow" target="_blank" href="https://play.rust-lang.org/?code=%23!%5Ballow(unused)%5D%0Afn+main()+%7B%0Afn+add_one(x:+usize)+-%3E+usize+%7B%0A++++x+%2B+1%0A%7D%0A%0Alet+ptr:+fn(usize)+-%3E+usize+=+add_one;%0Aassert_eq!(ptr(5),+6);%0A%0Alet+clos:+fn(usize)+-%3E+usize+=+%7Cx%7C+x+%2B+5;%0Aassert_eq!(clos(5),+10);%0A%7D&amp;edition=2021">Run</a></div>
+<p>In addition to varying based on their signature, function pointers come in two flavors: safe
+and unsafe. Plain <code>fn()</code> function pointers can only point to safe functions,
+while <code>unsafe fn()</code> function pointers can point to safe or unsafe functions.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">fn </span>add_one(x: usize) -&gt; usize {
+    x + <span class="number">1
+</span>}
+
+<span class="kw">unsafe fn </span>add_one_unsafely(x: usize) -&gt; usize {
+    x + <span class="number">1
+</span>}
+
+<span class="kw">let </span>safe_ptr: <span class="kw">fn</span>(usize) -&gt; usize = add_one;
+
+<span class="comment">//ERROR: mismatched types: expected normal fn, found unsafe fn
+//let bad_ptr: fn(usize) -&gt; usize = add_one_unsafely;
+
+</span><span class="kw">let </span>unsafe_ptr: <span class="kw">unsafe fn</span>(usize) -&gt; usize = add_one_unsafely;
+<span class="kw">let </span>really_safe_ptr: <span class="kw">unsafe fn</span>(usize) -&gt; usize = add_one;</code></pre><a class="test-arrow" target="_blank" href="https://play.rust-lang.org/?code=%23!%5Ballow(unused)%5D%0Afn+main()+%7B%0Afn+add_one(x:+usize)+-%3E+usize+%7B%0A++++x+%2B+1%0A%7D%0A%0Aunsafe+fn+add_one_unsafely(x:+usize)+-%3E+usize+%7B%0A++++x+%2B+1%0A%7D%0A%0Alet+safe_ptr:+fn(usize)+-%3E+usize+=+add_one;%0A%0A//ERROR:+mismatched+types:+expected+normal+fn,+found+unsafe+fn%0A//let+bad_ptr:+fn(usize)+-%3E+usize+=+add_one_unsafely;%0A%0Alet+unsafe_ptr:+unsafe+fn(usize)+-%3E+usize+=+add_one_unsafely;%0Alet+really_safe_ptr:+unsafe+fn(usize)+-%3E+usize+=+add_one;%0A%7D&amp;edition=2021">Run</a></div>
+<h4 id="abi"><a href="#abi">ABI</a></h4>
+<p>On top of that, function pointers can vary based on what ABI they use. This
+is achieved by adding the <code>extern</code> keyword before the type, followed by the
+ABI in question. The default ABI is “Rust”, i.e., <code>fn()</code> is the exact same
+type as <code>extern &quot;Rust&quot; fn()</code>. A pointer to a function with C ABI would have
+type <code>extern &quot;C&quot; fn()</code>.</p>
+<p><code>extern &quot;ABI&quot; { ... }</code> blocks declare functions with ABI “ABI”. The default
+here is “C”, i.e., functions declared in an <code>extern {...}</code> block have “C”
+ABI.</p>
+<p>For more information and a list of supported ABIs, see <a href="../nomicon/ffi.html#foreign-calling-conventions">the nomicon’s
+section on foreign calling conventions</a>.</p>
+<h4 id="variadic-functions"><a href="#variadic-functions">Variadic functions</a></h4>
+<p>Extern function declarations with the “C” or “cdecl” ABIs can also be <em>variadic</em>, allowing them
+to be called with a variable number of arguments. Normal Rust functions, even those with an
+<code>extern &quot;ABI&quot;</code>, cannot be variadic. For more information, see <a href="../nomicon/ffi.html#variadic-functions">the nomicon’s section on
+variadic functions</a>.</p>
+<h4 id="creating-function-pointers"><a href="#creating-function-pointers">Creating function pointers</a></h4>
+<p>When <code>bar</code> is the name of a function, then the expression <code>bar</code> is <em>not</em> a
+function pointer. Rather, it denotes a value of an unnameable type that
+uniquely identifies the function <code>bar</code>. The value is zero-sized because the
+type already identifies the function. This has the advantage that “calling”
+the value (it implements the <code>Fn*</code> traits) does not require dynamic
+dispatch.</p>
+<p>This zero-sized type <em>coerces</em> to a regular function pointer. For example:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>std::mem;
+
+<span class="kw">fn </span>bar(x: i32) {}
+
+<span class="kw">let </span>not_bar_ptr = bar; <span class="comment">// `not_bar_ptr` is zero-sized, uniquely identifying `bar`
+</span><span class="macro">assert_eq!</span>(mem::size_of_val(<span class="kw-2">&amp;</span>not_bar_ptr), <span class="number">0</span>);
+
+<span class="kw">let </span>bar_ptr: <span class="kw">fn</span>(i32) = not_bar_ptr; <span class="comment">// force coercion to function pointer
+</span><span class="macro">assert_eq!</span>(mem::size_of_val(<span class="kw-2">&amp;</span>bar_ptr), mem::size_of::&lt;usize&gt;());
+
+<span class="kw">let </span>footgun = <span class="kw-2">&amp;</span>bar; <span class="comment">// this is a shared reference to the zero-sized type identifying `bar`</span></code></pre><a class="test-arrow" target="_blank" href="https://play.rust-lang.org/?code=%23!%5Ballow(unused)%5D%0Afn+main()+%7B%0Ause+std::mem;%0A%0Afn+bar(x:+i32)+%7B%7D%0A%0Alet+not_bar_ptr+=+bar;+//+%60not_bar_ptr%60+is+zero-sized,+uniquely+identifying+%60bar%60%0Aassert_eq!(mem::size_of_val(%26not_bar_ptr),+0);%0A%0Alet+bar_ptr:+fn(i32)+=+not_bar_ptr;+//+force+coercion+to+function+pointer%0Aassert_eq!(mem::size_of_val(%26bar_ptr),+mem::size_of::%3Cusize%3E());%0A%0Alet+footgun+=+%26bar;+//+this+is+a+shared+reference+to+the+zero-sized+type+identifying+%60bar%60%0A%7D&amp;edition=2021">Run</a></div>
+<p>The last line shows that <code>&amp;bar</code> is not a function pointer either. Rather, it
+is a reference to the function-specific ZST. <code>&amp;bar</code> is basically never what you
+want when <code>bar</code> is a function.</p>
+<h4 id="casting-to-and-from-integers"><a href="#casting-to-and-from-integers">Casting to and from integers</a></h4>
+<p>You cast function pointers directly to integers:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let </span>fnptr: <span class="kw">fn</span>(i32) -&gt; i32 = |x| x+<span class="number">2</span>;
+<span class="kw">let </span>fnptr_addr = fnptr <span class="kw">as </span>usize;</code></pre><a class="test-arrow" target="_blank" href="https://play.rust-lang.org/?code=%23!%5Ballow(unused)%5D%0Afn+main()+%7B%0Alet+fnptr:+fn(i32)+-%3E+i32+=+%7Cx%7C+x%2B2;%0Alet+fnptr_addr+=+fnptr+as+usize;%0A%7D&amp;edition=2021">Run</a></div>
+<p>However, a direct cast back is not possible. You need to use <code>transmute</code>:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let </span>fnptr = fnptr_addr <span class="kw">as </span><span class="kw-2">*const </span>();
+<span class="kw">let </span>fnptr: <span class="kw">fn</span>(i32) -&gt; i32 = <span class="kw">unsafe </span>{ std::mem::transmute(fnptr) };
+<span class="macro">assert_eq!</span>(fnptr(<span class="number">40</span>), <span class="number">42</span>);</code></pre><a class="test-arrow" target="_blank" href="https://play.rust-lang.org/?code=%23!%5Ballow(unused)%5D%0Afn+main()+%7B%0A%23%5Bcfg(not(miri))%5D+%7B+//+FIXME:+use+strict+provenance+APIs+once+they+are+stable,+then+remove+this+%60cfg%60%0Alet+fnptr:+fn(i32)+-%3E+i32+=+%7Cx%7C+x%2B2;%0Alet+fnptr_addr+=+fnptr+as+usize;%0Alet+fnptr+=+fnptr_addr+as+*const+();%0Alet+fnptr:+fn(i32)+-%3E+i32+=+unsafe+%7B+std::mem::transmute(fnptr)+%7D;%0Aassert_eq!(fnptr(40),+42);%0A%7D%0A%7D&amp;edition=2021">Run</a></div>
+<p>Crucially, we <code>as</code>-cast to a raw pointer before <code>transmute</code>ing to a function pointer.
+This avoids an integer-to-pointer <code>transmute</code>, which can be problematic.
+Transmuting between raw pointers and function pointers (i.e., two pointer types) is fine.</p>
+<p>Note that all of this is not portable to platforms where function pointers and data pointers
+have different sizes.</p>
+<h4 id="trait-implementations-1"><a href="#trait-implementations-1">Trait implementations</a></h4>
+<p>In this documentation the shorthand <code>fn (T₁, T₂, …, Tₙ)</code> is used to represent non-variadic
+function pointers of varying length. Note that this is a convenience notation to avoid
+repetitive documentation, not valid Rust syntax.</p>
+<p>Due to a temporary restriction in Rust’s type system, these traits are only implemented on
+functions that take 12 arguments or less, with the <code>&quot;Rust&quot;</code> and <code>&quot;C&quot;</code> ABIs. In the future, this
+may change:</p>
+<ul>
+<li><a href="../cmp/trait.PartialEq.html" title="trait core::cmp::PartialEq"><code>PartialEq</code></a></li>
+<li><a href="../cmp/trait.Eq.html" title="trait core::cmp::Eq"><code>Eq</code></a></li>
+<li><a href="../cmp/trait.PartialOrd.html" title="trait core::cmp::PartialOrd"><code>PartialOrd</code></a></li>
+<li><a href="../cmp/trait.Ord.html" title="trait core::cmp::Ord"><code>Ord</code></a></li>
+<li><a href="../hash/trait.Hash.html" title="trait core::hash::Hash"><code>Hash</code></a></li>
+<li><a href="../fmt/trait.Pointer.html" title="trait core::fmt::Pointer"><code>Pointer</code></a></li>
+<li><a href="../fmt/macros/derive.Debug.html" title="derive core::fmt::macros::Debug"><code>Debug</code></a></li>
+</ul>
+<p>The following traits are implemented for function pointers with any number of arguments and
+any ABI. These traits have implementations that are automatically generated by the compiler,
+so are not limited by missing language features:</p>
+<ul>
+<li><a href="../clone/trait.Clone.html" title="trait core::clone::Clone"><code>Clone</code></a></li>
+<li><a href="../marker/trait.Copy.html" title="trait core::marker::Copy"><code>Copy</code></a></li>
+<li><a href="../marker/trait.Send.html" title="trait core::marker::Send"><code>Send</code></a></li>
+<li><a href="../marker/trait.Sync.html" title="trait core::marker::Sync"><code>Sync</code></a></li>
+<li><a href="../marker/trait.Unpin.html" title="trait core::marker::Unpin"><code>Unpin</code></a></li>
+<li><a href="../panic/unwind_safe/trait.UnwindSafe.html" title="trait core::panic::unwind_safe::UnwindSafe"><code>UnwindSafe</code></a></li>
+<li><a href="../panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe"><code>RefUnwindSafe</code></a></li>
+</ul>
+<p>In addition, all <em>safe</em> function pointers implement <a href="../ops/function/trait.Fn.html" title="trait core::ops::function::Fn"><code>Fn</code></a>, <a href="../ops/function/trait.FnMut.html" title="trait core::ops::function::FnMut"><code>FnMut</code></a>, and <a href="../ops/function/trait.FnOnce.html" title="trait core::ops::function::FnOnce"><code>FnOnce</code></a>, because
+these traits are specially known to the compiler.</p>
+</div></details></section></div></main></body></html>

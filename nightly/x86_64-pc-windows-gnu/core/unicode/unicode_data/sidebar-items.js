@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["UNICODE_VERSION"],"fn":["bitset_search","decode_length","decode_prefix_sum","skip_search"],"mod":["alphabetic","case_ignorable","cased","cc","conversions","grapheme_extend","lowercase","n","uppercase","white_space"]};

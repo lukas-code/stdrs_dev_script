@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["get_context","pending","poll_fn","ready"],"macro":["join"],"mod":["future","into_future","join","pending","poll_fn","ready"],"struct":["Pending","PollFn","Ready","ResumeTy"],"trait":["Future","IntoFuture"]};

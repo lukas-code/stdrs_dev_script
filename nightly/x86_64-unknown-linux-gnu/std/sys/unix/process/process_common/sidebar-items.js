@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["DEV_NULL"],"enum":["ChildStdio","ProgramKind","Stdio"],"fn":["construct_envp","os2c","sigaddset","sigemptyset"],"struct":["Argv","CStringArray","ChildPipes","Command","CommandArgs","ExitCode","StdioPipes"]};

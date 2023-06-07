@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["number_of_digits_decimal_left_shift","parse_decimal"],"struct":["Decimal"]};

@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["trap"],"mod":["altivec","macros","vsx"]};

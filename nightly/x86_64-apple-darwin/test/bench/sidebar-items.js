@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["benchmark","black_box","fmt_bench_samples","fmt_thousands_sep","iter","ns_iter_inner","run_once"],"struct":["BenchSamples","Bencher"]};

@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"macro":["supported_lane_count"],"mod":["sealed"],"struct":["LaneCount"],"trait":["SupportedLaneCount"]};

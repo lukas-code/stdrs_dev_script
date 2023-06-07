@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["copy_fold","copy_try_fold"],"struct":["Copied"],"trait":["SpecNextChunk"]};

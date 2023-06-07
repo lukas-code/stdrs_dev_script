@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["INTERNAL_OVERFLOW_ERROR","MAX_REFCOUNT"],"fn":["arcinner_layout_for_value_layout","data_offset","data_offset_align"],"macro":["acquire"],"struct":["Arc","ArcInner","Weak","WeakInner"],"trait":["ArcEqIdent","ArcFromSlice","ToArcSlice"]};

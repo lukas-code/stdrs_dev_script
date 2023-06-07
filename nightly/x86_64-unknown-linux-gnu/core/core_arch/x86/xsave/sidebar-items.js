@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["_XCR_XFEATURE_ENABLED_MASK"],"fn":["_xgetbv","_xrstor","_xrstors","_xsave","_xsavec","_xsaveopt","_xsaves","_xsetbv","xgetbv","xrstor","xrstors","xsave","xsavec","xsaveopt","xsaves","xsetbv"]};

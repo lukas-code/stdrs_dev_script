@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["FreeFunctions","Method","SourceFile","Span","Symbol","TokenStream"],"macro":["declare_tags"]};

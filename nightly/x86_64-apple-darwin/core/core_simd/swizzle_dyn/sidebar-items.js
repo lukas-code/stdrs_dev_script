@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["avx2_pshufb","transize","transize_raw","zeroing_idxs"]};

@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["vec_mule","vec_mulo","vec_perm","vec_sum2s"]};

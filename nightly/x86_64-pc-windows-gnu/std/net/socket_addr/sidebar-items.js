@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["SocketAddr"],"fn":["resolve_socket_addr"],"struct":["SocketAddrV4","SocketAddrV6"],"trait":["ToSocketAddrs"]};

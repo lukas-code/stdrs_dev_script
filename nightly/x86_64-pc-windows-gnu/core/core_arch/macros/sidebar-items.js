@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"macro":["simd_shuffle","static_assert","static_assert_simm_bits","static_assert_uimm_bits","types"]};

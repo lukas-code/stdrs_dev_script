@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["CONT_MASK","NONASCII_MASK","UTF8_CHAR_WIDTH"],"fn":["contains_nonascii","next_code_point","next_code_point_reverse","run_utf8_validation","utf8_acc_cont_byte","utf8_char_width","utf8_first_byte","utf8_is_cont_byte"]};

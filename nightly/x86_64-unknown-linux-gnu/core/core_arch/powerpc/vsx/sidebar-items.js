@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["vec_xxpermdi"],"mod":["sealed"],"struct":["vector_bool_long","vector_double","vector_signed_long","vector_unsigned_long"]};

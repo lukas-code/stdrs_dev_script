@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["local_sort","percentile_of_sorted","winsorize"],"struct":["Summary"],"trait":["Stats"]};

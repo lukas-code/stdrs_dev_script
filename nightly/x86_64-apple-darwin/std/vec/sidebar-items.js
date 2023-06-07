@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["from_elem","from_elem_in"],"struct":["Drain","DrainFilter","IntoIter","Splice","Vec"]};

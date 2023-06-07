@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["HI_USIZE","LO_USIZE","USIZE_BYTES"],"fn":["contains_zero_byte","memchr","memchr_aligned","memchr_naive","memrchr","repeat_byte"]};

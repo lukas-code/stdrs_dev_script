@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"type":["NonZero_c_char","c_char"]};

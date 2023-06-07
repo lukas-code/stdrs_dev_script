@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["call","fallback","load","load_from_module"],"static":["PTR"],"type":["F"]};

@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["COMPLETE","INCOMPLETE","POISONED","QUEUED","RUNNING"],"struct":["CompletionGuard","Once","OnceState"]};

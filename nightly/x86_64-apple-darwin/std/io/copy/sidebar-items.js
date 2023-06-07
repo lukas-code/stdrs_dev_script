@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["copy","generic_copy","stack_buffer_copy"],"trait":["BufferedCopySpec"]};

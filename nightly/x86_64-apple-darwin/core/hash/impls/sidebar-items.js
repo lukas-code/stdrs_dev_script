@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"macro":["impl_hash_tuple","impl_write","last_type","maybe_tuple_doc"]};

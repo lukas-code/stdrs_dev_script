@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["TAG_CUSTOM","TAG_MASK","TAG_OS","TAG_SIMPLE","TAG_SIMPLE_MESSAGE"],"fn":["decode_repr","kind_from_prim"],"macro":["static_assert"],"struct":["Repr"]};

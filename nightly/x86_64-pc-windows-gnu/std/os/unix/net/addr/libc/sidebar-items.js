@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"struct":["sockaddr","sockaddr_un"],"type":["c_int","socklen_t"]};

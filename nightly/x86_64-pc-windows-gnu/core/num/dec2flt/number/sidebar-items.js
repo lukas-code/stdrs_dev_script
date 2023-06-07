@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["INT_POW10"],"struct":["Number"]};

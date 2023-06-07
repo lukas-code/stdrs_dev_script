@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["args","clone","init","really_init"],"static":["ARGC","ARGV","ARGV_INIT_ARRAY"]};

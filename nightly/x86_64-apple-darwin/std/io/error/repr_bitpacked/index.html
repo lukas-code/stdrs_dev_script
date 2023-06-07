@@ -1,0 +1,97 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="This is a densely packed error representation which is used on targets with 64-bit pointers."><title>std::io::error::repr_bitpacked - Rust</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../../static.files/rustdoc-2fcac8296ac587d8.css" id="mainThemeStyle"><div id="rustdoc-vars" data-root-path="../../../../" data-static-root-path="../../../../static.files/" data-current-crate="std" data-themes="" data-resource-suffix="" data-rustdoc-version="1.72.0-nightly (b2b34bd83 2023-06-06)" data-search-js="search-4926e5fc22a5646a.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-8c76f75bfb6bd192.css" data-theme-light-css="light-0f8c037637f9eb3e.css" data-theme-dark-css="dark-1097f8e92a01e3cf.css" data-theme-ayu-css="ayu-614652228113ac93.css" ></div><script src="../../../../static.files/storage-62ce34ea385b278a.js"></script><script defer src="../../../../static.files/main-48600a9606eff342.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../../../static.files/light-0f8c037637f9eb3e.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../../../static.files/dark-1097f8e92a01e3cf.css"><link rel="stylesheet" href="../../../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../../static.files/favicon-2c020d218678b618.svg"><script src="/nav.js"></script>
+</head><body class="rustdoc mod"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="logo-container" href="../../../../std/index.html"><img class="rust-logo" src="../../../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><h2></h2></nav><nav class="sidebar"><a class="logo-container" href="../../../../std/index.html"><img class="rust-logo" src="../../../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><h2 class="location"><a href="#">Module repr_bitpacked</a></h2><div class="sidebar-elems"><section><ul class="block"><li><a href="#macros">Macros</a></li><li><a href="#structs">Structs</a></li><li><a href="#constants">Constants</a></li><li><a href="#functions">Functions</a></li></ul></section></div></nav><main><div class="width-limiter"><nav class="sub"><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="main-heading"><h1>Module <a href="../../../index.html">std</a>::<wbr><a href="../../index.html">io</a>::<wbr><a href="../index.html">error</a>::<wbr><a class="mod" href="#">repr_bitpacked</a><button id="copy-path" title="Copy item path to clipboard"><img src="../../../../static.files/clipboard-7571035ce49a181d.svg" width="19" height="18" alt="Copy item path"></button></h1><span class="out-of-band"><a class="srclink" href="../../../../src/std/io/error/repr_bitpacked.rs.html#1-412">source</a> · <button id="toggle-all-docs" title="collapse all docs">[<span>&#x2212;</span>]</button></span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>This is a densely packed error representation which is used on targets with
+64-bit pointers.</p>
+<p>(Note that <code>bitpacked</code> vs <code>unpacked</code> here has no relationship to
+<code>#[repr(packed)]</code>, it just refers to attempting to use any available bits in
+a more clever manner than <code>rustc</code>’s default layout algorithm would).</p>
+<p>Conceptually, it stores the same data as the “unpacked” equivalent we use on
+other targets. Specifically, you can imagine it as an optimized version of
+the following enum (which is roughly equivalent to what’s stored by
+<code>repr_unpacked::Repr</code>, e.g. <code>super::ErrorData&lt;Box&lt;Custom&gt;&gt;</code>):</p>
+
+<div class="example-wrap ignore"><a href="#" class="tooltip" title="This example is not tested">ⓘ</a><pre class="rust rust-example-rendered"><code><span class="kw">enum </span>ErrorData {
+   Os(i32),
+   Simple(ErrorKind),
+   SimpleMessage(<span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>SimpleMessage),
+   Custom(Box&lt;Custom&gt;),
+}</code></pre><a class="test-arrow" target="_blank" href="https://play.rust-lang.org/?code=%23!%5Ballow(unused)%5D%0Afn+main()+%7B%0Aenum+ErrorData+%7B%0A+++Os(i32),%0A+++Simple(ErrorKind),%0A+++SimpleMessage(%26'static+SimpleMessage),%0A+++Custom(Box%3CCustom%3E),%0A%7D%0A%7D&amp;edition=2021">Run</a></div>
+<p>However, it packs this data into a 64bit non-zero value.</p>
+<p>This optimization not only allows <code>io::Error</code> to occupy a single pointer,
+but improves <code>io::Result</code> as well, especially for situations like
+<code>io::Result&lt;()&gt;</code> (which is now 64 bits) or <code>io::Result&lt;u64&gt;</code> (which is now
+128 bits), which are quite common.</p>
+<h2 id="layout-1"><a href="#layout-1">Layout</a></h2>
+<p>Tagged values are 64 bits, with the 2 least significant bits used for the
+tag. This means there are there are 4 “variants”:</p>
+<ul>
+<li>
+<p><strong>Tag 0b00</strong>: The first variant is equivalent to
+<code>ErrorData::SimpleMessage</code>, and holds a <code>&amp;'static SimpleMessage</code> directly.</p>
+<p><code>SimpleMessage</code> has an alignment &gt;= 4 (which is requested with
+<code>#[repr(align)]</code> and checked statically at the bottom of this file), which
+means every <code>&amp;'static SimpleMessage</code> should have the both tag bits as 0,
+meaning its tagged and untagged representation are equivalent.</p>
+<p>This means we can skip tagging it, which is necessary as this variant can
+be constructed from a <code>const fn</code>, which probably cannot tag pointers (or
+at least it would be difficult).</p>
+</li>
+<li>
+<p><strong>Tag 0b01</strong>: The other pointer variant holds the data for
+<code>ErrorData::Custom</code> and the remaining 62 bits are used to store a
+<code>Box&lt;Custom&gt;</code>. <code>Custom</code> also has alignment &gt;= 4, so the bottom two bits
+are free to use for the tag.</p>
+<p>The only important thing to note is that <code>ptr::wrapping_add</code> and
+<code>ptr::wrapping_sub</code> are used to tag the pointer, rather than bitwise
+operations. This should preserve the pointer’s provenance, which would
+otherwise be lost.</p>
+</li>
+<li>
+<p><strong>Tag 0b10</strong>: Holds the data for <code>ErrorData::Os(i32)</code>. We store the <code>i32</code>
+in the pointer’s most significant 32 bits, and don’t use the bits <code>2..32</code>
+for anything. Using the top 32 bits is just to let us easily recover the
+<code>i32</code> code with the correct sign.</p>
+</li>
+<li>
+<p><strong>Tag 0b11</strong>: Holds the data for <code>ErrorData::Simple(ErrorKind)</code>. This
+stores the <code>ErrorKind</code> in the top 32 bits as well, although it doesn’t
+occupy nearly that many. Most of the bits are unused here, but it’s not
+like we need them for anything else yet.</p>
+</li>
+</ul>
+<h2 id="use-of-nonnull"><a href="#use-of-nonnull">Use of <code>NonNull&lt;()&gt;</code></a></h2>
+<p>Everything is stored in a <code>NonNull&lt;()&gt;</code>, which is odd, but actually serves a
+purpose.</p>
+<p>Conceptually you might think of this more like:</p>
+
+<div class="example-wrap ignore"><a href="#" class="tooltip" title="This example is not tested">ⓘ</a><pre class="rust rust-example-rendered"><code><span class="kw">union </span>Repr {
+    <span class="comment">// holds integer (Simple/Os) variants, and
+    // provides access to the tag bits.
+    </span>bits: NonZeroU64,
+    <span class="comment">// Tag is 0, so this is stored untagged.
+    </span>msg: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>SimpleMessage,
+    <span class="comment">// Tagged (offset) `Box&lt;Custom&gt;` pointer.
+    </span>tagged_custom: NonNull&lt;()&gt;,
+}</code></pre><a class="test-arrow" target="_blank" href="https://play.rust-lang.org/?code=%23!%5Ballow(unused)%5D%0Afn+main()+%7B%0Aunion+Repr+%7B%0A++++//+holds+integer+(Simple/Os)+variants,+and%0A++++//+provides+access+to+the+tag+bits.%0A++++bits:+NonZeroU64,%0A++++//+Tag+is+0,+so+this+is+stored+untagged.%0A++++msg:+%26'static+SimpleMessage,%0A++++//+Tagged+(offset)+%60Box%3CCustom%3E%60+pointer.%0A++++tagged_custom:+NonNull%3C()%3E,%0A%7D%0A%7D&amp;edition=2021">Run</a></div>
+<p>But there are a few problems with this:</p>
+<ol>
+<li>
+<p>Union access is equivalent to a transmute, so this representation would
+require we transmute between integers and pointers in at least one
+direction, which may be UB (and even if not, it is likely harder for a
+compiler to reason about than explicit ptr-&gt;int operations).</p>
+</li>
+<li>
+<p>Even if all fields of a union have a niche, the union itself doesn’t,
+although this may change in the future. This would make things like
+<code>io::Result&lt;()&gt;</code> and <code>io::Result&lt;usize&gt;</code> larger, which defeats part of
+the motivation of this bitpacking.</p>
+</li>
+</ol>
+<p>Storing everything in a <code>NonZeroUsize</code> (or some other integer) would be a
+bit more traditional for pointer tagging, but it would lose provenance
+information, couldn’t be constructed from a <code>const fn</code>, and would probably
+run into other issues as well.</p>
+<p>The <code>NonNull&lt;()&gt;</code> seems like the only alternative, even if it’s fairly odd
+to use a pointer type to store something that may hold an integer, some of
+the time.</p>
+</div></details><h2 id="macros" class="small-section-header"><a href="#macros">Macros</a></h2><ul class="item-table"><li><div class="item-name"><a class="macro" href="macro.static_assert.html" title="macro std::io::error::repr_bitpacked::static_assert">static_assert</a><span title="Restricted Visibility">&nbsp;🔒</span> </div></li></ul><h2 id="structs" class="small-section-header"><a href="#structs">Structs</a></h2><ul class="item-table"><li><div class="item-name"><a class="struct" href="struct.Repr.html" title="struct std::io::error::repr_bitpacked::Repr">Repr</a><span title="Restricted Visibility">&nbsp;🔒</span> </div><div class="desc docblock-short">The internal representation.</div></li></ul><h2 id="constants" class="small-section-header"><a href="#constants">Constants</a></h2><ul class="item-table"><li><div class="item-name"><a class="constant" href="constant.TAG_CUSTOM.html" title="constant std::io::error::repr_bitpacked::TAG_CUSTOM">TAG_CUSTOM</a><span title="Restricted Visibility">&nbsp;🔒</span> </div></li><li><div class="item-name"><a class="constant" href="constant.TAG_MASK.html" title="constant std::io::error::repr_bitpacked::TAG_MASK">TAG_MASK</a><span title="Restricted Visibility">&nbsp;🔒</span> </div></li><li><div class="item-name"><a class="constant" href="constant.TAG_OS.html" title="constant std::io::error::repr_bitpacked::TAG_OS">TAG_OS</a><span title="Restricted Visibility">&nbsp;🔒</span> </div></li><li><div class="item-name"><a class="constant" href="constant.TAG_SIMPLE.html" title="constant std::io::error::repr_bitpacked::TAG_SIMPLE">TAG_SIMPLE</a><span title="Restricted Visibility">&nbsp;🔒</span> </div></li><li><div class="item-name"><a class="constant" href="constant.TAG_SIMPLE_MESSAGE.html" title="constant std::io::error::repr_bitpacked::TAG_SIMPLE_MESSAGE">TAG_SIMPLE_MESSAGE</a><span title="Restricted Visibility">&nbsp;🔒</span> </div></li></ul><h2 id="functions" class="small-section-header"><a href="#functions">Functions</a></h2><ul class="item-table"><li><div class="item-name"><a class="fn" href="fn.decode_repr.html" title="fn std::io::error::repr_bitpacked::decode_repr">decode_repr</a><span title="Restricted Visibility">&nbsp;🔒</span> <sup title="unsafe function">⚠</sup></div></li><li><div class="item-name"><a class="fn" href="fn.kind_from_prim.html" title="fn std::io::error::repr_bitpacked::kind_from_prim">kind_from_prim</a><span title="Restricted Visibility">&nbsp;🔒</span> </div></li></ul></section></div></main></body></html>

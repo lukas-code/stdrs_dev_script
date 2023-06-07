@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"mod":["append","borrow","dedup_sorted_iter","fix","map","mem","merge_iter","navigate","node","remove","search","set","set_val","split"],"trait":["Recover"]};

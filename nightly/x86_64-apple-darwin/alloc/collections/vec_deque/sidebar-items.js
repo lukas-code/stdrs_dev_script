@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["wrap_index"],"mod":["drain","into_iter","iter","iter_mut","macros","spec_extend","spec_from_iter"],"struct":["Drain","IntoIter","Iter","IterMut","VecDeque"]};

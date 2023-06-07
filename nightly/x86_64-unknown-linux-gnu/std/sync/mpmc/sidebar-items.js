@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["ReceiverFlavor","SenderFlavor"],"fn":["channel","sync_channel"],"mod":["array","context","counter","error","list","select","utils","waker","zero"],"struct":["Receiver","Sender"]};

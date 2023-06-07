@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["AlignmentEnum16","AlignmentEnum32","AlignmentEnum64"],"fn":["_alignment_can_be_structurally_matched"],"struct":["Alignment"],"type":["AlignmentEnum"]};

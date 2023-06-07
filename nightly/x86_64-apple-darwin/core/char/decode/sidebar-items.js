@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["decode_utf16"],"struct":["DecodeUtf16","DecodeUtf16Error"]};

@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["AddressKind"],"fn":["sockaddr_un","sun_path_offset"],"mod":["libc"],"struct":["SocketAddr"]};

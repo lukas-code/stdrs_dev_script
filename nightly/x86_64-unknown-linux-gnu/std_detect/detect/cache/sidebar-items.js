@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["CACHE_CAPACITY"],"fn":["detect_and_initialize","do_initialize","initialize","set_bit","test","test_bit","unset_bit"],"static":["CACHE"],"struct":["Cache","Initializer"]};

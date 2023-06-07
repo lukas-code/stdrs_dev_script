@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["link","osstr2str","rename","symlink","symlink_path"],"trait":["DirEntryExt","FileExt","FileTypeExt","MetadataExt","OpenOptionsExt"]};

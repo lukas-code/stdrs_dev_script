@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["__extendsfdf2","extend"],"mod":["__extendsfdf2","__extendsfdf2vfp"]};

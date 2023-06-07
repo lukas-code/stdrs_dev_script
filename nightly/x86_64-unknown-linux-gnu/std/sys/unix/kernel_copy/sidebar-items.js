@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["INVALID_FD"],"enum":["CopyResult","FdMeta","SpliceMode"],"fn":["copy_regular_files","copy_spec","fd_to_meta","safe_kernel_copy","sendfile_splice"],"struct":["Copier","CopyParams"],"trait":["CopyRead","CopyWrite","SpecCopy"]};

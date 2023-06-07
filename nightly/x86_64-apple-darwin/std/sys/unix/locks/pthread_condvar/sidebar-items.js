@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["raw"],"struct":["AllocatedCondvar","Condvar"]};

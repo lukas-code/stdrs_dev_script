@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["INTERNER"],"struct":["Interner","Symbol"]};

@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["Alignment","Count","Flag"],"foreigntype":["Opaque"],"static":["USIZE_MARKER"],"struct":["Argument","Placeholder","UnsafeArg"]};

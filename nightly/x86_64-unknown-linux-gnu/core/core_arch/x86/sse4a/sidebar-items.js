@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["_mm_extract_si64","_mm_insert_si64","_mm_stream_sd","_mm_stream_ss","extrq","insertq","movntsd","movntss"]};

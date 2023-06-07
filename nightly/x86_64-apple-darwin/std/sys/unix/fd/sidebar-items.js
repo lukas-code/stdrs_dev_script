@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["READ_LIMIT"],"fn":["max_iov"],"struct":["FileDesc"]};

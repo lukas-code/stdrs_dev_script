@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["Char"],"fn":["escape_default"],"macro":["delegating_ascii_methods"],"struct":["EscapeDefault"],"trait":["AsciiExt"]};

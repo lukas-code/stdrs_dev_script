@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["L_tmpnam","STDERR_FILENO","STDIN_FILENO","STDOUT_FILENO","TMP_MAX"],"fn":["strcasecmp","strncasecmp","wmemchr"],"mod":["align"]};

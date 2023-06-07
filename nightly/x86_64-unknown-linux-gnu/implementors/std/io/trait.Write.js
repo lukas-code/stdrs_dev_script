@@ -1,0 +1,6 @@
+(function() {var implementors = {
+"proc_macro":[["impl <a class=\"trait\" href=\"std/io/trait.Write.html\" title=\"trait std::io::Write\">Write</a> for <a class=\"struct\" href=\"proc_macro/bridge/buffer/struct.Buffer.html\" title=\"struct proc_macro::bridge::buffer::Buffer\">Buffer</a>"]],
+"rustc_std_workspace_std":[],
+"std":[],
+"test":[["impl&lt;T: <a class=\"trait\" href=\"std/io/trait.Write.html\" title=\"trait std::io::Write\">Write</a>&gt; <a class=\"trait\" href=\"std/io/trait.Write.html\" title=\"trait std::io::Write\">Write</a> for <a class=\"enum\" href=\"test/console/enum.OutputLocation.html\" title=\"enum test::console::OutputLocation\">OutputLocation</a>&lt;T&gt;"],["impl&lt;T: <a class=\"trait\" href=\"std/io/trait.Write.html\" title=\"trait std::io::Write\">Write</a>&gt; <a class=\"trait\" href=\"std/io/trait.Write.html\" title=\"trait std::io::Write\">Write</a> for <a class=\"struct\" href=\"test/term/terminfo/struct.TerminfoTerminal.html\" title=\"struct test::term::terminfo::TerminfoTerminal\">TerminfoTerminal</a>&lt;T&gt;"]]
+};if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()

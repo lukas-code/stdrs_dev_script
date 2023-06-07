@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["boxed_slice_as_array_unchecked"],"mod":["thin"],"struct":["Box","ThinBox"],"trait":["BoxFromSlice","BoxIter"]};

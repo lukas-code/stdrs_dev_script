@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"struct":["cmsghdr","ucred"],"type":["c_int","gid_t","pid_t","uid_t"]};

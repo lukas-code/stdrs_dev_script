@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["frequency","query"],"struct":["PerformanceCounterInstant"]};

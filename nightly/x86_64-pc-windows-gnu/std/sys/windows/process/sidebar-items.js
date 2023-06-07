@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["Stdio"],"fn":["command_prompt","ensure_no_nuls","make_command_line","make_dirp","make_envp","program_exists","resolve_exe","search_paths","zeroed_process_information","zeroed_startupinfo"],"struct":["Command","CommandArgs","EnvKey","ExitCode","ExitStatus","ExitStatusError","Process","StdioPipes"]};

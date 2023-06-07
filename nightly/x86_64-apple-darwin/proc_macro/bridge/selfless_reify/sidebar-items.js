@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["_reify_to_extern_c_fn_unary","reify_to_extern_c_fn_hrt_bridge"],"macro":["define_reify_functions"]};

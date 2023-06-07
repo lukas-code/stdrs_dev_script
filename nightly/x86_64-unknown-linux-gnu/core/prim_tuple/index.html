@@ -1,0 +1,84 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="A finite heterogeneous sequence, `(T, U, ..)`."><title>core::prim_tuple - Rust</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-2fcac8296ac587d8.css" id="mainThemeStyle"><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="core" data-themes="" data-resource-suffix="" data-rustdoc-version="1.72.0-nightly (b2b34bd83 2023-06-06)" data-search-js="search-4926e5fc22a5646a.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-8c76f75bfb6bd192.css" data-theme-light-css="light-0f8c037637f9eb3e.css" data-theme-dark-css="dark-1097f8e92a01e3cf.css" data-theme-ayu-css="ayu-614652228113ac93.css" ></div><script src="../../static.files/storage-62ce34ea385b278a.js"></script><script defer src="../../static.files/main-48600a9606eff342.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../static.files/light-0f8c037637f9eb3e.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../static.files/dark-1097f8e92a01e3cf.css"><link rel="stylesheet" href="../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"><script src="/nav.js"></script>
+</head><body class="rustdoc mod"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="logo-container" href="../../core/index.html"><img class="rust-logo" src="../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><h2></h2></nav><nav class="sidebar"><a class="logo-container" href="../../core/index.html"><img class="rust-logo" src="../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><h2 class="location"><a href="#">Module prim_tuple</a></h2><div class="sidebar-elems"></div></nav><main><div class="width-limiter"><nav class="sub"><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="main-heading"><h1>Module <a href="../index.html">core</a>::<wbr><a class="mod" href="#">prim_tuple</a><button id="copy-path" title="Copy item path to clipboard"><img src="../../static.files/clipboard-7571035ce49a181d.svg" width="19" height="18" alt="Copy item path"></button></h1><span class="out-of-band"><span class="since" title="Stable since Rust version 1.0.0">1.0.0</span> · <a class="srclink" href="../../src/core/primitive_docs.rs.html#1076">source</a> · <button id="toggle-all-docs" title="collapse all docs">[<span>&#x2212;</span>]</button></span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>A finite heterogeneous sequence, <code>(T, U, ..)</code>.</p>
+<p>Let’s cover each of those in turn:</p>
+<p>Tuples are <em>finite</em>. In other words, a tuple has a length. Here’s a tuple
+of length <code>3</code>:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code>(<span class="string">&quot;hello&quot;</span>, <span class="number">5</span>, <span class="string">&#39;c&#39;</span>);</code></pre><a class="test-arrow" target="_blank" href="https://play.rust-lang.org/?code=%23!%5Ballow(unused)%5D%0Afn+main()+%7B%0A(%22hello%22,+5,+'c');%0A%7D&amp;edition=2021">Run</a></div>
+<p>‘Length’ is also sometimes called ‘arity’ here; each tuple of a different
+length is a different, distinct type.</p>
+<p>Tuples are <em>heterogeneous</em>. This means that each element of the tuple can
+have a different type. In that tuple above, it has the type:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>str, i32, char)</code></pre><a class="test-arrow" target="_blank" href="https://play.rust-lang.org/?code=%23!%5Ballow(unused)%5D%0Afn+main()+%7B%0Alet+_:%0A(%26'static+str,+i32,+char)%0A=+(%22hello%22,+5,+'c');%0A%7D&amp;edition=2021">Run</a></div>
+<p>Tuples are a <em>sequence</em>. This means that they can be accessed by position;
+this is called ‘tuple indexing’, and it looks like this:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let </span>tuple = (<span class="string">&quot;hello&quot;</span>, <span class="number">5</span>, <span class="string">&#39;c&#39;</span>);
+
+<span class="macro">assert_eq!</span>(tuple.<span class="number">0</span>, <span class="string">&quot;hello&quot;</span>);
+<span class="macro">assert_eq!</span>(tuple.<span class="number">1</span>, <span class="number">5</span>);
+<span class="macro">assert_eq!</span>(tuple.<span class="number">2</span>, <span class="string">&#39;c&#39;</span>);</code></pre><a class="test-arrow" target="_blank" href="https://play.rust-lang.org/?code=%23!%5Ballow(unused)%5D%0Afn+main()+%7B%0Alet+tuple+=+(%22hello%22,+5,+'c');%0A%0Aassert_eq!(tuple.0,+%22hello%22);%0Aassert_eq!(tuple.1,+5);%0Aassert_eq!(tuple.2,+'c');%0A%7D&amp;edition=2021">Run</a></div>
+<p>The sequential nature of the tuple applies to its implementations of various
+traits. For example, in <a href="../cmp/trait.PartialOrd.html" title="trait core::cmp::PartialOrd"><code>PartialOrd</code></a> and <a href="../cmp/trait.Ord.html" title="trait core::cmp::Ord"><code>Ord</code></a>, the elements are compared
+sequentially until the first non-equal set is found.</p>
+<p>For more about tuples, see <a href="../book/ch03-02-data-types.html#the-tuple-type">the book</a>.</p>
+<h2 id="trait-implementations-1"><a href="#trait-implementations-1">Trait implementations</a></h2>
+<p>In this documentation the shorthand <code>(T₁, T₂, …, Tₙ)</code> is used to represent tuples of varying
+length. When that is used, any trait bound expressed on <code>T</code> applies to each element of the
+tuple independently. Note that this is a convenience notation to avoid repetitive
+documentation, not valid Rust syntax.</p>
+<p>Due to a temporary restriction in Rust’s type system, the following traits are only
+implemented on tuples of arity 12 or less. In the future, this may change:</p>
+<ul>
+<li><a href="../cmp/trait.PartialEq.html" title="trait core::cmp::PartialEq"><code>PartialEq</code></a></li>
+<li><a href="../cmp/trait.Eq.html" title="trait core::cmp::Eq"><code>Eq</code></a></li>
+<li><a href="../cmp/trait.PartialOrd.html" title="trait core::cmp::PartialOrd"><code>PartialOrd</code></a></li>
+<li><a href="../cmp/trait.Ord.html" title="trait core::cmp::Ord"><code>Ord</code></a></li>
+<li><a href="../fmt/trait.Debug.html" title="trait core::fmt::Debug"><code>Debug</code></a></li>
+<li><a href="../default/trait.Default.html" title="trait core::default::Default"><code>Default</code></a></li>
+<li><a href="../hash/trait.Hash.html" title="trait core::hash::Hash"><code>Hash</code></a></li>
+<li><a href="../convert/trait.From.html" title="trait core::convert::From"><code>From&lt;[T; N]&gt;</code></a></li>
+</ul>
+<p>The following traits are implemented for tuples of any length. These traits have
+implementations that are automatically generated by the compiler, so are not limited by
+missing language features.</p>
+<ul>
+<li><a href="../clone/trait.Clone.html" title="trait core::clone::Clone"><code>Clone</code></a></li>
+<li><a href="../marker/trait.Copy.html" title="trait core::marker::Copy"><code>Copy</code></a></li>
+<li><a href="../marker/trait.Send.html" title="trait core::marker::Send"><code>Send</code></a></li>
+<li><a href="../marker/trait.Sync.html" title="trait core::marker::Sync"><code>Sync</code></a></li>
+<li><a href="../marker/trait.Unpin.html" title="trait core::marker::Unpin"><code>Unpin</code></a></li>
+<li><a href="../panic/unwind_safe/trait.UnwindSafe.html" title="trait core::panic::unwind_safe::UnwindSafe"><code>UnwindSafe</code></a></li>
+<li><a href="../panic/unwind_safe/trait.RefUnwindSafe.html" title="trait core::panic::unwind_safe::RefUnwindSafe"><code>RefUnwindSafe</code></a></li>
+</ul>
+<h2 id="examples"><a href="#examples">Examples</a></h2>
+<p>Basic usage:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let </span>tuple = (<span class="string">&quot;hello&quot;</span>, <span class="number">5</span>, <span class="string">&#39;c&#39;</span>);
+
+<span class="macro">assert_eq!</span>(tuple.<span class="number">0</span>, <span class="string">&quot;hello&quot;</span>);</code></pre><a class="test-arrow" target="_blank" href="https://play.rust-lang.org/?code=%23!%5Ballow(unused)%5D%0Afn+main()+%7B%0Alet+tuple+=+(%22hello%22,+5,+'c');%0A%0Aassert_eq!(tuple.0,+%22hello%22);%0A%7D&amp;edition=2021">Run</a></div>
+<p>Tuples are often used as a return type when you want to return more than
+one value:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">fn </span>calculate_point() -&gt; (i32, i32) {
+    <span class="comment">// Don&#39;t do a calculation, that&#39;s not the point of the example
+    </span>(<span class="number">4</span>, <span class="number">5</span>)
+}
+
+<span class="kw">let </span>point = calculate_point();
+
+<span class="macro">assert_eq!</span>(point.<span class="number">0</span>, <span class="number">4</span>);
+<span class="macro">assert_eq!</span>(point.<span class="number">1</span>, <span class="number">5</span>);
+
+<span class="comment">// Combining this with patterns can be nicer.
+
+</span><span class="kw">let </span>(x, y) = calculate_point();
+
+<span class="macro">assert_eq!</span>(x, <span class="number">4</span>);
+<span class="macro">assert_eq!</span>(y, <span class="number">5</span>);</code></pre><a class="test-arrow" target="_blank" href="https://play.rust-lang.org/?code=%23!%5Ballow(unused)%5D%0Afn+main()+%7B%0Afn+calculate_point()+-%3E+(i32,+i32)+%7B%0A++++//+Don't+do+a+calculation,+that's+not+the+point+of+the+example%0A++++(4,+5)%0A%7D%0A%0Alet+point+=+calculate_point();%0A%0Aassert_eq!(point.0,+4);%0Aassert_eq!(point.1,+5);%0A%0A//+Combining+this+with+patterns+can+be+nicer.%0A%0Alet+(x,+y)+=+calculate_point();%0A%0Aassert_eq!(x,+4);%0Aassert_eq!(y,+5);%0A%7D&amp;edition=2021">Run</a></div>
+<p>Homogenous tuples can be created from arrays of appropriate length:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let </span>array: [u32; <span class="number">3</span>] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];
+<span class="kw">let </span>tuple: (u32, u32, u32) = array.into();</code></pre><a class="test-arrow" target="_blank" href="https://play.rust-lang.org/?code=%23!%5Ballow(unused)%5D%0Afn+main()+%7B%0Alet+array:+%5Bu32;+3%5D+=+%5B1,+2,+3%5D;%0Alet+tuple:+(u32,+u32,+u32)+=+array.into();%0A%7D&amp;edition=2021">Run</a></div>
+</div></details></section></div></main></body></html>

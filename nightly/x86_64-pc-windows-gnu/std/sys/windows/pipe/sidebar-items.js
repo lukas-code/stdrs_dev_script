@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["State"],"fn":["anon_pipe","random_number","read2","slice_to_end","spawn_pipe_relay"],"struct":["AnonPipe","AsyncPipe","Pipes"],"type":["AlertableIoFn"]};

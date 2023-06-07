@@ -1,0 +1,61 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="A 32-bit floating point type (specifically, the “binary32” type defined in IEEE 754-2008)."><title>core::prim_f32 - Rust</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-2fcac8296ac587d8.css" id="mainThemeStyle"><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="core" data-themes="" data-resource-suffix="" data-rustdoc-version="1.72.0-nightly (b2b34bd83 2023-06-06)" data-search-js="search-4926e5fc22a5646a.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-8c76f75bfb6bd192.css" data-theme-light-css="light-0f8c037637f9eb3e.css" data-theme-dark-css="dark-1097f8e92a01e3cf.css" data-theme-ayu-css="ayu-614652228113ac93.css" ></div><script src="../../static.files/storage-62ce34ea385b278a.js"></script><script defer src="../../static.files/main-48600a9606eff342.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../static.files/light-0f8c037637f9eb3e.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../static.files/dark-1097f8e92a01e3cf.css"><link rel="stylesheet" href="../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"><script src="/nav.js"></script>
+</head><body class="rustdoc mod"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="logo-container" href="../../core/index.html"><img class="rust-logo" src="../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><h2></h2></nav><nav class="sidebar"><a class="logo-container" href="../../core/index.html"><img class="rust-logo" src="../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><h2 class="location"><a href="#">Module prim_f32</a></h2><div class="sidebar-elems"></div></nav><main><div class="width-limiter"><nav class="sub"><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="main-heading"><h1>Module <a href="../index.html">core</a>::<wbr><a class="mod" href="#">prim_f32</a><button id="copy-path" title="Copy item path to clipboard"><img src="../../static.files/clipboard-7571035ce49a181d.svg" width="19" height="18" alt="Copy item path"></button></h1><span class="out-of-band"><span class="since" title="Stable since Rust version 1.0.0">1.0.0</span> · <a class="srclink" href="../../src/core/primitive_docs.rs.html#1167">source</a> · <button id="toggle-all-docs" title="collapse all docs">[<span>&#x2212;</span>]</button></span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>A 32-bit floating point type (specifically, the “binary32” type defined in IEEE 754-2008).</p>
+<p>This type can represent a wide range of decimal numbers, like <code>3.5</code>, <code>27</code>,
+<code>-113.75</code>, <code>0.0078125</code>, <code>34359738368</code>, <code>0</code>, <code>-1</code>. So unlike integer types
+(such as <code>i32</code>), floating point types can represent non-integer numbers,
+too.</p>
+<p>However, being able to represent this wide range of numbers comes at the
+cost of precision: floats can only represent some of the real numbers and
+calculation with floats round to a nearby representable number. For example,
+<code>5.0</code> and <code>1.0</code> can be exactly represented as <code>f32</code>, but <code>1.0 / 5.0</code> results
+in <code>0.20000000298023223876953125</code> since <code>0.2</code> cannot be exactly represented
+as <code>f32</code>. Note, however, that printing floats with <code>println</code> and friends will
+often discard insignificant digits: <code>println!(&quot;{}&quot;, 1.0f32 / 5.0f32)</code> will
+print <code>0.2</code>.</p>
+<p>Additionally, <code>f32</code> can represent some special values:</p>
+<ul>
+<li>−0.0: IEEE 754 floating point numbers have a bit that indicates their sign, so −0.0 is a
+possible value. For comparison −0.0 = +0.0, but floating point operations can carry
+the sign bit through arithmetic operations. This means −0.0 × +0.0 produces −0.0 and
+a negative number rounded to a value smaller than a float can represent also produces −0.0.</li>
+<li><a href="#associatedconstant.INFINITY">∞</a> and
+<a href="#associatedconstant.NEG_INFINITY">−∞</a>: these result from calculations
+like <code>1.0 / 0.0</code>.</li>
+<li><a href="#associatedconstant.NAN">NaN (not a number)</a>: this value results from
+calculations like <code>(-1.0).sqrt()</code>. NaN has some potentially unexpected
+behavior:
+<ul>
+<li>It is not equal to any float, including itself! This is the reason <code>f32</code>
+doesn’t implement the <code>Eq</code> trait.</li>
+<li>It is also neither smaller nor greater than any float, making it
+impossible to sort by the default comparison operation, which is the
+reason <code>f32</code> doesn’t implement the <code>Ord</code> trait.</li>
+<li>It is also considered <em>infectious</em> as almost all calculations where one
+of the operands is NaN will also result in NaN. The explanations on this
+page only explicitly document behavior on NaN operands if this default
+is deviated from.</li>
+<li>Lastly, there are multiple bit patterns that are considered NaN.
+Rust does not currently guarantee that the bit patterns of NaN are
+preserved over arithmetic operations, and they are not guaranteed to be
+portable or even fully deterministic! This means that there may be some
+surprising results upon inspecting the bit patterns,
+as the same calculations might produce NaNs with different bit patterns.</li>
+</ul>
+</li>
+</ul>
+<p>When the number resulting from a primitive operation (addition,
+subtraction, multiplication, or division) on this type is not exactly
+representable as <code>f32</code>, it is rounded according to the roundTiesToEven
+direction defined in IEEE 754-2008. That means:</p>
+<ul>
+<li>The result is the representable value closest to the true value, if there
+is a unique closest representable value.</li>
+<li>If the true value is exactly half-way between two representable values,
+the result is the one with an even least-significant binary digit.</li>
+<li>If the true value’s magnitude is ≥ <code>f32::MAX</code> + 2<sup>(<code>f32::MAX_EXP</code> −
+<code>f32::MANTISSA_DIGITS</code> − 1)</sup>, the result is ∞ or −∞ (preserving the
+true value’s sign).</li>
+</ul>
+<p>For more information on floating point numbers, see <a href="https://en.wikipedia.org/wiki/Single-precision_floating-point_format">Wikipedia</a>.</p>
+<p><em><a href="../f32/consts/index.html" title="mod core::f32::consts">See also the <code>std::f32::consts</code> module</a>.</em></p>
+</div></details></section></div></main></body></html>

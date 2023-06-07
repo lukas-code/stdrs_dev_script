@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["chdir","current_exe","env","errno","error_string","exit","getcwd","getenv","getpid","home_dir","home_dir_crt","join_paths","setenv","split_paths","temp_dir","unsetenv"],"struct":["Env","JoinPathsError","SplitPaths"]};

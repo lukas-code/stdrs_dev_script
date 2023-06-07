@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"macro":["impl_as_raw_fd","impl_from_raw_fd","impl_into_raw_fd"]};

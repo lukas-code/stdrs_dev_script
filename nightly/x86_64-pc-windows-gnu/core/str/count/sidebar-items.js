@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["UNROLL_INNER","USIZE_SIZE"],"fn":["char_count_general_case","contains_non_continuation_byte","count_chars","do_count_chars","sum_bytes_in_usize"]};

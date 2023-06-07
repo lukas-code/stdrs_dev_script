@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["DISPATCH_TIME_FOREVER","DISPATCH_TIME_NOW","EMPTY","NOTIFIED","PARKED"],"fn":["dispatch_release","dispatch_semaphore_create","dispatch_semaphore_signal","dispatch_semaphore_wait","dispatch_time"],"struct":["Parker"],"type":["dispatch_semaphore_t","dispatch_time_t"]};

@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["empty","repeat","sink"],"struct":["Empty","Repeat","Sink"]};

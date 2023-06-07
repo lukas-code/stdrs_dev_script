@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["CharErrorKind"],"fn":["char_try_from_u32","from_digit","from_u32","from_u32_unchecked"],"struct":["CharTryFromError","ParseCharError"]};

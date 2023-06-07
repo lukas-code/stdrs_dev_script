@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["ordering_is_some"],"macro":["last_type","lexical_cmp","lexical_ord","lexical_partial_cmp","maybe_tuple_doc","tuple_impls"]};

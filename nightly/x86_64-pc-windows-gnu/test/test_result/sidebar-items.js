@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["TR_FAILED","TR_OK"],"enum":["TestResult"],"fn":["calc_result","get_result_from_exit_code"]};

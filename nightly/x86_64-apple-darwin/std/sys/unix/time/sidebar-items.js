@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["NSEC_PER_SEC","TIMESPEC_MAX","UNIX_EPOCH"],"mod":["inner"],"struct":["Nanoseconds","SystemTime","Timespec"]};

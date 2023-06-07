@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["intersperse_fold","intersperse_size_hint"],"struct":["Intersperse","IntersperseWith"]};

@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"macro":["impl_mask","impl_number"],"trait":["SimdPartialEq"]};

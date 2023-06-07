@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"macro":["impl_for_optional_bool","impl_for_tuples","impl_is_zero","impl_is_zero_option_of_nonzero","impl_is_zero_option_of_num"],"trait":["IsZero"]};

@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["float_to_decimal_common_exact","float_to_decimal_common_shortest","float_to_decimal_display","float_to_exponential_common","float_to_exponential_common_exact","float_to_exponential_common_shortest","float_to_general_debug"],"macro":["floating","impl_general_format"],"trait":["GeneralFormat"]};

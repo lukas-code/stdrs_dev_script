@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["NORMAL0","NORMAL1","SINGLETONS0L","SINGLETONS0U","SINGLETONS1L","SINGLETONS1U"],"fn":["check","is_printable"]};

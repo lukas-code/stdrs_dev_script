@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"macro":["for_base_ops","for_base_types","int_divrem_guard","unsafe_base","wrap_bitshift"],"mod":["assign","deref","unary"]};

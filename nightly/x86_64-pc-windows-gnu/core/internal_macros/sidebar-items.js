@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"macro":["cfg_if","forward_ref_binop","forward_ref_op_assign","forward_ref_unop","impl_fn_for_zst"]};

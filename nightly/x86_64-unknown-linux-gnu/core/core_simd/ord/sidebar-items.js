@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"macro":["impl_float","impl_integer","impl_mask"],"trait":["SimdOrd","SimdPartialOrd"]};

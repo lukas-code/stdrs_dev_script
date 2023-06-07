@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["create","destroy","get","set"],"type":["Key"]};

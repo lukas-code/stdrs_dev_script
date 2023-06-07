@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["UNUSED"],"fn":["assert_coerce_unsized","is_reading","is_writing"],"mod":["lazy","once"],"struct":["BorrowError","BorrowMutError","BorrowRef","BorrowRefMut","Cell","LazyCell","OnceCell","Ref","RefCell","RefMut","SyncUnsafeCell","UnsafeCell"],"type":["BorrowFlag"]};

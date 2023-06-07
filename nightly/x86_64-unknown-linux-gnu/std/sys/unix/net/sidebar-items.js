@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"externcrate":["netc"],"fn":["cvt_gai","init","on_resolver_failure"],"struct":["Socket"],"type":["wrlen_t"]};

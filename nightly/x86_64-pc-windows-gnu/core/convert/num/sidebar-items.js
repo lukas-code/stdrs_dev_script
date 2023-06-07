@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"macro":["impl_float_to_int","impl_from","impl_from_bool","nzint_impl_from","nzint_impl_try_from_int","nzint_impl_try_from_nzint","rev","try_from_both_bounded","try_from_lower_bounded","try_from_unbounded","try_from_upper_bounded"],"mod":["private","ptr_try_from_impls"],"trait":["FloatToInt"]};

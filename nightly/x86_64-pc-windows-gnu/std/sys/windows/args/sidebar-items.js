@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["Arg","Quote"],"fn":["append_arg","args","from_wide_to_user_path","make_bat_command_line","non_zero_u16","parse_lp_cmd_line","to_user_path"],"struct":["Args"]};

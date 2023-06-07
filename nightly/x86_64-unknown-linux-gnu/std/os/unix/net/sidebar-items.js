@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["AncillaryData","AncillaryError"],"mod":["addr","ancillary","datagram","listener","stream"],"struct":["Incoming","Messages","ScmCredentials","ScmRights","SocketAddr","SocketAncillary","SocketCred","UnixDatagram","UnixListener","UnixStream"]};

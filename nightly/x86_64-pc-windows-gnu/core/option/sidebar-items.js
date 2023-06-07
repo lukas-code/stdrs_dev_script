@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["Option"],"fn":["expect_failed"],"macro":["non_zero_option"],"struct":["IntoIter","Item","Iter","IterMut"],"trait":["SpecOptionPartialEq"]};

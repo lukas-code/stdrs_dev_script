@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"macro":["saturating_impl","saturating_int_impl","saturating_int_impl_signed","saturating_int_impl_unsigned","sh_impl_all","sh_impl_signed","sh_impl_unsigned"],"struct":["Saturating"]};

@@ -1,0 +1,99 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Inplace iterate-and-collect specialization for `Vec`"><title>alloc::vec::in_place_collect - Rust</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-2fcac8296ac587d8.css" id="mainThemeStyle"><div id="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="alloc" data-themes="" data-resource-suffix="" data-rustdoc-version="1.72.0-nightly (b2b34bd83 2023-06-06)" data-search-js="search-4926e5fc22a5646a.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-8c76f75bfb6bd192.css" data-theme-light-css="light-0f8c037637f9eb3e.css" data-theme-dark-css="dark-1097f8e92a01e3cf.css" data-theme-ayu-css="ayu-614652228113ac93.css" ></div><script src="../../../static.files/storage-62ce34ea385b278a.js"></script><script defer src="../../../static.files/main-48600a9606eff342.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../../static.files/light-0f8c037637f9eb3e.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../../static.files/dark-1097f8e92a01e3cf.css"><link rel="stylesheet" href="../../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"><script src="/nav.js"></script>
+</head><body class="rustdoc mod"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="logo-container" href="../../../alloc/index.html"><img class="rust-logo" src="../../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><h2></h2></nav><nav class="sidebar"><a class="logo-container" href="../../../alloc/index.html"><img class="rust-logo" src="../../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><h2 class="location"><a href="#">Module in_place_collect</a></h2><div class="sidebar-elems"><section><ul class="block"><li><a href="#traits">Traits</a></li><li><a href="#functions">Functions</a></li></ul></section></div></nav><main><div class="width-limiter"><nav class="sub"><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="main-heading"><h1>Module <a href="../../index.html">alloc</a>::<wbr><a href="../index.html">vec</a>::<wbr><a class="mod" href="#">in_place_collect</a><button id="copy-path" title="Copy item path to clipboard"><img src="../../../static.files/clipboard-7571035ce49a181d.svg" width="19" height="18" alt="Copy item path"></button></h1><span class="out-of-band"><a class="srclink" href="../../../src/alloc/vec/in_place_collect.rs.html#1-309">source</a> · <button id="toggle-all-docs" title="collapse all docs">[<span>&#x2212;</span>]</button></span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Inplace iterate-and-collect specialization for <code>Vec</code></p>
+<p>Note: This documents Vec internals, some of the following sections explain implementation
+details and are best read together with the source of this module.</p>
+<p>The specialization in this module applies to iterators in the shape of
+<code>source.adapter().adapter().adapter().collect::&lt;Vec&lt;U&gt;&gt;()</code>
+where <code>source</code> is an owning iterator obtained from <a href="../struct.Vec.html" title="struct alloc::vec::Vec"><code>Vec&lt;T&gt;</code></a>, <a href="../../boxed/struct.Box.html" title="struct alloc::boxed::Box"><code>Box&lt;[T]&gt;</code></a> (by conversion to <code>Vec</code>)
+or <a href="../../collections/binary_heap/struct.BinaryHeap.html" title="struct alloc::collections::binary_heap::BinaryHeap"><code>BinaryHeap&lt;T&gt;</code></a>, the adapters each consume one or more items per step
+(represented by <a href="../../../core/iter/traits/marker/trait.InPlaceIterable.html" title="trait core::iter::traits::marker::InPlaceIterable"><code>InPlaceIterable</code></a>), provide transitive access to <code>source</code> (via <a href="../../../core/iter/adapters/trait.SourceIter.html" title="trait core::iter::adapters::SourceIter"><code>SourceIter</code></a>)
+and thus the underlying allocation. And finally the layouts of <code>T</code> and <code>U</code> must
+have the same size and alignment, this is currently ensured via const eval instead of trait bounds
+in the specialized <a href="../spec_from_iter/trait.SpecFromIter.html" title="trait alloc::vec::spec_from_iter::SpecFromIter"><code>SpecFromIter</code></a> implementation.</p>
+<p>By extension some other collections which use <code>collect::&lt;Vec&lt;_&gt;&gt;()</code> internally in their
+<code>FromIterator</code> implementation benefit from this too.</p>
+<p>Access to the underlying source goes through a further layer of indirection via the private
+trait <a href="trait.AsVecIntoIter.html" title="trait alloc::vec::in_place_collect::AsVecIntoIter"><code>AsVecIntoIter</code></a> to hide the implementation detail that other collections may use
+<code>vec::IntoIter</code> internally.</p>
+<p>In-place iteration depends on the interaction of several unsafe traits, implementation
+details of multiple parts in the iterator pipeline and often requires holistic reasoning
+across multiple structs since iterators are executed cooperatively rather than having
+a central evaluator/visitor struct executing all iterator components.</p>
+<h2 id="reading-from-and-writing-to-the-same-allocation"><a href="#reading-from-and-writing-to-the-same-allocation">Reading from and writing to the same allocation</a></h2>
+<p>By its nature collecting in place means that the reader and writer side of the iterator
+use the same allocation. Since <code>try_fold()</code> (used in <a href="trait.SpecInPlaceCollect.html" title="trait alloc::vec::in_place_collect::SpecInPlaceCollect"><code>SpecInPlaceCollect</code></a>) takes a
+reference to the iterator for the duration of the iteration that means we can’t interleave
+the step of reading a value and getting a reference to write to. Instead raw pointers must be
+used on the reader and writer side.</p>
+<p>That writes never clobber a yet-to-be-read item is ensured by the <a href="../../../core/iter/traits/marker/trait.InPlaceIterable.html" title="trait core::iter::traits::marker::InPlaceIterable"><code>InPlaceIterable</code></a> requirements.</p>
+<h2 id="layout-constraints"><a href="#layout-constraints">Layout constraints</a></h2>
+<p><a href="../../alloc/trait.Allocator.html" title="trait alloc::alloc::Allocator"><code>Allocator</code></a> requires that <code>allocate()</code> and <code>deallocate()</code> have matching alignment and size.
+Additionally this specialization doesn’t make sense for ZSTs as there is no reallocation to
+avoid and it would make pointer arithmetic more difficult.</p>
+<h2 id="drop--and-panic-safety"><a href="#drop--and-panic-safety">Drop- and panic-safety</a></h2>
+<p>Iteration can panic, requiring dropping the already written parts but also the remainder of
+the source. Iteration can also leave some source items unconsumed which must be dropped.
+All those drops in turn can panic which then must either leak the allocation or abort to avoid
+double-drops.</p>
+<p>This is handled by the <a href="../in_place_drop/struct.InPlaceDrop.html" title="struct alloc::vec::in_place_drop::InPlaceDrop"><code>InPlaceDrop</code></a> guard for sink items (<code>U</code>) and by
+<a href="../into_iter/struct.IntoIter.html#method.forget_allocation_drop_remaining" title="method alloc::vec::into_iter::IntoIter::forget_allocation_drop_remaining"><code>vec::IntoIter::forget_allocation_drop_remaining()</code></a> for remaining source items (<code>T</code>).</p>
+<p>If dropping any remaining source item (<code>T</code>) panics then <a href="../in_place_drop/struct.InPlaceDstBufDrop.html" title="struct alloc::vec::in_place_drop::InPlaceDstBufDrop"><code>InPlaceDstBufDrop</code></a> will handle dropping
+the already collected sink items (<code>U</code>) and freeing the allocation.</p>
+<h2 id="o1-collect"><a href="#o1-collect">O(1) collect</a></h2>
+<p>The main iteration itself is further specialized when the iterator implements
+<a href="../../../core/iter/adapters/zip/trait.TrustedRandomAccessNoCoerce.html" title="trait core::iter::adapters::zip::TrustedRandomAccessNoCoerce"><code>TrustedRandomAccessNoCoerce</code></a> to let the optimizer see that it is a counted loop with a single
+<a href="https://en.wikipedia.org/wiki/Induction_variable">induction variable</a>. This can turn some iterators into a noop, i.e. it reduces them from O(n) to
+O(1). This particular optimization is quite fickle and doesn’t always work, see <a href="https://github.com/rust-lang/rust/issues/79308">#79308</a></p>
+<p>Since unchecked accesses through that trait do not advance the read pointer of <code>IntoIter</code>
+this would interact unsoundly with the requirements about dropping the tail described above.
+But since the normal <code>Drop</code> implementation of <code>IntoIter</code> would suffer from the same problem it
+is only correct for <code>TrustedRandomAccessNoCoerce</code> to be implemented when the items don’t
+have a destructor. Thus that implicit requirement also makes the specialization safe to use for
+in-place collection.
+Note that this safety concern is about the correctness of <code>impl Drop for IntoIter</code>,
+not the guarantees of <code>InPlaceIterable</code>.</p>
+<h2 id="adapter-implementations"><a href="#adapter-implementations">Adapter implementations</a></h2>
+<p>The invariants for adapters are documented in <a href="../../../core/iter/adapters/trait.SourceIter.html" title="trait core::iter::adapters::SourceIter"><code>SourceIter</code></a> and <a href="../../../core/iter/traits/marker/trait.InPlaceIterable.html" title="trait core::iter::traits::marker::InPlaceIterable"><code>InPlaceIterable</code></a>, but
+getting them right can be rather subtle for multiple, sometimes non-local reasons.
+For example <code>InPlaceIterable</code> would be valid to implement for <a href="../../../core/iter/adapters/peekable/struct.Peekable.html" title="struct core::iter::adapters::peekable::Peekable"><code>Peekable</code></a>, except
+that it is stateful, cloneable and <code>IntoIter</code>’s clone implementation shortens the underlying
+allocation which means if the iterator has been peeked and then gets cloned there no longer is
+enough room, thus breaking an invariant (<a href="https://github.com/rust-lang/rust/issues/85322">#85322</a>).</p>
+<h2 id="examples"><a href="#examples">Examples</a></h2>
+<p>Some cases that are optimized by this specialization, more can be found in the <code>Vec</code>
+benchmarks:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="doccomment">/// Converts a usize vec into an isize one.
+</span><span class="kw">pub fn </span>cast(vec: Vec&lt;usize&gt;) -&gt; Vec&lt;isize&gt; {
+  <span class="comment">// Does not allocate, free or panic. On optlevel&gt;=2 it does not loop.
+  // Of course this particular case could and should be written with `into_raw_parts` and
+  // `from_raw_parts` instead.
+  </span>vec.into_iter().map(|u| u <span class="kw">as </span>isize).collect()
+}</code></pre><a class="test-arrow" target="_blank" href="https://play.rust-lang.org/?code=%23!%5Ballow(unused)%5D%0A%23%5Ballow(unused_extern_crates)%5D%0Aextern+crate+r%23alloc;%0Afn+main()+%7B%0A%23%5Ballow(dead_code)%5D%0A///+Converts+a+usize+vec+into+an+isize+one.%0Apub+fn+cast(vec:+Vec%3Cusize%3E)+-%3E+Vec%3Cisize%3E+%7B%0A++//+Does+not+allocate,+free+or+panic.+On+optlevel%3E=2+it+does+not+loop.%0A++//+Of+course+this+particular+case+could+and+should+be+written+with+%60into_raw_parts%60+and%0A++//+%60from_raw_parts%60+instead.%0A++vec.into_iter().map(%7Cu%7C+u+as+isize).collect()%0A%7D%0A%7D&amp;edition=2021">Run</a></div>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="doccomment">/// Drops remaining items in `src` and if the layouts of `T` and `U` match it
+/// returns an empty Vec backed by the original allocation. Otherwise it returns a new
+/// empty vec.
+</span><span class="kw">pub fn </span>recycle_allocation&lt;T, U&gt;(src: Vec&lt;T&gt;) -&gt; Vec&lt;U&gt; {
+  src.into_iter().filter_map(|<span class="kw">_</span>| <span class="prelude-val">None</span>).collect()
+}</code></pre><a class="test-arrow" target="_blank" href="https://play.rust-lang.org/?code=%23!%5Ballow(unused)%5D%0A%23%5Ballow(unused_extern_crates)%5D%0Aextern+crate+r%23alloc;%0Afn+main()+%7B%0A%23%5Ballow(dead_code)%5D%0A///+Drops+remaining+items+in+%60src%60+and+if+the+layouts+of+%60T%60+and+%60U%60+match+it%0A///+returns+an+empty+Vec+backed+by+the+original+allocation.+Otherwise+it+returns+a+new%0A///+empty+vec.%0Apub+fn+recycle_allocation%3CT,+U%3E(src:+Vec%3CT%3E)+-%3E+Vec%3CU%3E+%7B%0A++src.into_iter().filter_map(%7C_%7C+None).collect()%0A%7D%0A%7D&amp;edition=2021">Run</a></div>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let </span>vec = <span class="macro">vec!</span>[<span class="number">13usize</span>; <span class="number">1024</span>];
+<span class="kw">let _ </span>= vec.into_iter()
+  .enumerate()
+  .filter_map(|(idx, val)| <span class="kw">if </span>idx % <span class="number">2 </span>== <span class="number">0 </span>{ <span class="prelude-val">Some</span>(val+idx) } <span class="kw">else </span>{<span class="prelude-val">None</span>})
+  .collect::&lt;Vec&lt;<span class="kw">_</span>&gt;&gt;();
+
+<span class="comment">// is equivalent to the following, but doesn&#39;t require bounds checks
+
+</span><span class="kw">let </span><span class="kw-2">mut </span>vec = <span class="macro">vec!</span>[<span class="number">13usize</span>; <span class="number">1024</span>];
+<span class="kw">let </span><span class="kw-2">mut </span>write_idx = <span class="number">0</span>;
+<span class="kw">for </span>idx <span class="kw">in </span><span class="number">0</span>..vec.len() {
+   <span class="kw">if </span>idx % <span class="number">2 </span>== <span class="number">0 </span>{
+      vec[write_idx] = vec[idx] + idx;
+      write_idx += <span class="number">1</span>;
+   }
+}
+vec.truncate(write_idx);</code></pre><a class="test-arrow" target="_blank" href="https://play.rust-lang.org/?code=%23!%5Ballow(unused)%5D%0Afn+main()+%7B%0Alet+vec+=+vec!%5B13usize;+1024%5D;%0Alet+_+=+vec.into_iter()%0A++.enumerate()%0A++.filter_map(%7C(idx,+val)%7C+if+idx+%%+2+==+0+%7B+Some(val%2Bidx)+%7D+else+%7BNone%7D)%0A++.collect::%3CVec%3C_%3E%3E();%0A%0A//+is+equivalent+to+the+following,+but+doesn't+require+bounds+checks%0A%0Alet+mut+vec+=+vec!%5B13usize;+1024%5D;%0Alet+mut+write_idx+=+0;%0Afor+idx+in+0..vec.len()+%7B%0A+++if+idx+%%+2+==+0+%7B%0A++++++vec%5Bwrite_idx%5D+=+vec%5Bidx%5D+%2B+idx;%0A++++++write_idx+%2B=+1;%0A+++%7D%0A%7D%0Avec.truncate(write_idx);%0A%7D&amp;edition=2021">Run</a></div>
+</div></details><h2 id="traits" class="small-section-header"><a href="#traits">Traits</a></h2><ul class="item-table"><li><div class="item-name"><a class="trait" href="trait.AsVecIntoIter.html" title="trait alloc::vec::in_place_collect::AsVecIntoIter">AsVecIntoIter</a><span title="Restricted Visibility">&nbsp;🔒</span> </div><div class="desc docblock-short">Internal helper trait for in-place iteration specialization.</div></li><li><div class="item-name"><a class="trait" href="trait.InPlaceIterableMarker.html" title="trait alloc::vec::in_place_collect::InPlaceIterableMarker">InPlaceIterableMarker</a><span title="Restricted Visibility">&nbsp;🔒</span> </div><div class="desc docblock-short">Specialization marker for collecting an iterator pipeline into a Vec while reusing the
+source allocation, i.e. executing the pipeline in place.</div></li><li><div class="item-name"><a class="trait" href="trait.SpecInPlaceCollect.html" title="trait alloc::vec::in_place_collect::SpecInPlaceCollect">SpecInPlaceCollect</a><span title="Restricted Visibility">&nbsp;🔒</span> </div><div class="desc docblock-short">Helper trait to hold specialized implementations of the in-place iterate-collect loop</div></li></ul><h2 id="functions" class="small-section-header"><a href="#functions">Functions</a></h2><ul class="item-table"><li><div class="item-name"><a class="fn" href="fn.write_in_place_with_drop.html" title="fn alloc::vec::in_place_collect::write_in_place_with_drop">write_in_place_with_drop</a><span title="Restricted Visibility">&nbsp;🔒</span> </div></li></ul></section></div></main></body></html>

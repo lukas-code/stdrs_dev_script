@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["and_then_or_clear"],"struct":["Fuse"],"trait":["FuseImpl"]};

@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["__truncdfsf2","trunc"],"mod":["__truncdfsf2","__truncdfsf2vfp"]};

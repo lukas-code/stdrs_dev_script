@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["MAX_INSERTION"],"fn":["max_index","median_idx","median_of_medians","median_of_ninthers","min_index","ninther","partition_at_index","partition_at_index_loop"]};

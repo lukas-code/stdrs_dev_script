@@ -1,0 +1,74 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Raw, unsafe pointers, `*const T`, and `*mut T`."><title>std::prim_pointer - Rust</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-2fcac8296ac587d8.css" id="mainThemeStyle"><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="std" data-themes="" data-resource-suffix="" data-rustdoc-version="1.72.0-nightly (b2b34bd83 2023-06-06)" data-search-js="search-4926e5fc22a5646a.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-8c76f75bfb6bd192.css" data-theme-light-css="light-0f8c037637f9eb3e.css" data-theme-dark-css="dark-1097f8e92a01e3cf.css" data-theme-ayu-css="ayu-614652228113ac93.css" ></div><script src="../../static.files/storage-62ce34ea385b278a.js"></script><script defer src="../../static.files/main-48600a9606eff342.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../static.files/light-0f8c037637f9eb3e.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../static.files/dark-1097f8e92a01e3cf.css"><link rel="stylesheet" href="../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"><script src="/nav.js"></script>
+</head><body class="rustdoc mod"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="logo-container" href="../../std/index.html"><img class="rust-logo" src="../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><h2></h2></nav><nav class="sidebar"><a class="logo-container" href="../../std/index.html"><img class="rust-logo" src="../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><h2 class="location"><a href="#">Module prim_pointer</a></h2><div class="sidebar-elems"></div></nav><main><div class="width-limiter"><nav class="sub"><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="main-heading"><h1>Module <a href="../index.html">std</a>::<wbr><a class="mod" href="#">prim_pointer</a><button id="copy-path" title="Copy item path to clipboard"><img src="../../static.files/clipboard-7571035ce49a181d.svg" width="19" height="18" alt="Copy item path"></button></h1><span class="out-of-band"><span class="since" title="Stable since Rust version 1.0.0">1.0.0</span> · <a class="srclink" href="../../src/std/primitive_docs.rs.html#578">source</a> · <button id="toggle-all-docs" title="collapse all docs">[<span>&#x2212;</span>]</button></span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Raw, unsafe pointers, <code>*const T</code>, and <code>*mut T</code>.</p>
+<p><em><a href="../ptr/index.html" title="mod std::ptr">See also the <code>std::ptr</code> module</a>.</em></p>
+<p>Working with raw pointers in Rust is uncommon, typically limited to a few patterns.
+Raw pointers can be unaligned or <a href="../ptr/fn.null.html" title="fn std::ptr::null"><code>null</code></a>. However, when a raw pointer is
+dereferenced (using the <code>*</code> operator), it must be non-null and aligned.</p>
+<p>Storing through a raw pointer using <code>*ptr = data</code> calls <code>drop</code> on the old value, so
+<a href="../ptr/fn.write.html" title="fn std::ptr::write"><code>write</code></a> must be used if the type has drop glue and memory is not already
+initialized - otherwise <code>drop</code> would be called on the uninitialized memory.</p>
+<p>Use the <a href="../ptr/fn.null.html" title="fn std::ptr::null"><code>null</code></a> and <a href="../ptr/fn.null_mut.html" title="fn std::ptr::null_mut"><code>null_mut</code></a> functions to create null pointers, and the
+<a href="../primitive.pointer.html#method.is_null" title="method pointer::is_null"><code>is_null</code></a> method of the <code>*const T</code> and <code>*mut T</code> types to check for null.
+The <code>*const T</code> and <code>*mut T</code> types also define the <a href="../primitive.pointer.html#method.offset" title="method pointer::offset"><code>offset</code></a> method, for
+pointer math.</p>
+<h2 id="common-ways-to-create-raw-pointers"><a href="#common-ways-to-create-raw-pointers">Common ways to create raw pointers</a></h2><h3 id="1-coerce-a-reference-t-or-mutable-reference-mut-t"><a href="#1-coerce-a-reference-t-or-mutable-reference-mut-t">1. Coerce a reference (<code>&amp;T</code>) or mutable reference (<code>&amp;mut T</code>).</a></h3>
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let </span>my_num: i32 = <span class="number">10</span>;
+<span class="kw">let </span>my_num_ptr: <span class="kw-2">*const </span>i32 = <span class="kw-2">&amp;</span>my_num;
+<span class="kw">let </span><span class="kw-2">mut </span>my_speed: i32 = <span class="number">88</span>;
+<span class="kw">let </span>my_speed_ptr: <span class="kw-2">*mut </span>i32 = <span class="kw-2">&amp;mut </span>my_speed;</code></pre><a class="test-arrow" target="_blank" href="https://play.rust-lang.org/?code=%23!%5Ballow(unused)%5D%0Afn+main()+%7B%0Alet+my_num:+i32+=+10;%0Alet+my_num_ptr:+*const+i32+=+%26my_num;%0Alet+mut+my_speed:+i32+=+88;%0Alet+my_speed_ptr:+*mut+i32+=+%26mut+my_speed;%0A%7D&amp;edition=2021">Run</a></div>
+<p>To get a pointer to a boxed value, dereference the box:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let </span>my_num: Box&lt;i32&gt; = Box::new(<span class="number">10</span>);
+<span class="kw">let </span>my_num_ptr: <span class="kw-2">*const </span>i32 = <span class="kw-2">&amp;*</span>my_num;
+<span class="kw">let </span><span class="kw-2">mut </span>my_speed: Box&lt;i32&gt; = Box::new(<span class="number">88</span>);
+<span class="kw">let </span>my_speed_ptr: <span class="kw-2">*mut </span>i32 = <span class="kw-2">&amp;mut *</span>my_speed;</code></pre><a class="test-arrow" target="_blank" href="https://play.rust-lang.org/?code=%23!%5Ballow(unused)%5D%0Afn+main()+%7B%0Alet+my_num:+Box%3Ci32%3E+=+Box::new(10);%0Alet+my_num_ptr:+*const+i32+=+%26*my_num;%0Alet+mut+my_speed:+Box%3Ci32%3E+=+Box::new(88);%0Alet+my_speed_ptr:+*mut+i32+=+%26mut+*my_speed;%0A%7D&amp;edition=2021">Run</a></div>
+<p>This does not take ownership of the original allocation
+and requires no resource management later,
+but you must not use the pointer after its lifetime.</p>
+<h3 id="2-consume-a-box-boxt"><a href="#2-consume-a-box-boxt">2. Consume a box (<code>Box&lt;T&gt;</code>).</a></h3>
+<p>The <a href="../boxed/struct.Box.html#method.into_raw" title="associated function std::boxed::Box::into_raw"><code>into_raw</code></a> function consumes a box and returns
+the raw pointer. It doesn’t destroy <code>T</code> or deallocate any memory.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let </span>my_speed: Box&lt;i32&gt; = Box::new(<span class="number">88</span>);
+<span class="kw">let </span>my_speed: <span class="kw-2">*mut </span>i32 = Box::into_raw(my_speed);
+
+<span class="comment">// By taking ownership of the original `Box&lt;T&gt;` though
+// we are obligated to put it together later to be destroyed.
+</span><span class="kw">unsafe </span>{
+    drop(Box::from_raw(my_speed));
+}</code></pre><a class="test-arrow" target="_blank" href="https://play.rust-lang.org/?code=%23!%5Ballow(unused)%5D%0Afn+main()+%7B%0Alet+my_speed:+Box%3Ci32%3E+=+Box::new(88);%0Alet+my_speed:+*mut+i32+=+Box::into_raw(my_speed);%0A%0A//+By+taking+ownership+of+the+original+%60Box%3CT%3E%60+though%0A//+we+are+obligated+to+put+it+together+later+to+be+destroyed.%0Aunsafe+%7B%0A++++drop(Box::from_raw(my_speed));%0A%7D%0A%7D&amp;edition=2021">Run</a></div>
+<p>Note that here the call to <a href="../mem/fn.drop.html" title="fn std::mem::drop"><code>drop</code></a> is for clarity - it indicates
+that we are done with the given value and it should be destroyed.</p>
+<h3 id="3-create-it-using-ptraddr_of"><a href="#3-create-it-using-ptraddr_of">3. Create it using <code>ptr::addr_of!</code></a></h3>
+<p>Instead of coercing a reference to a raw pointer, you can use the macros
+<a href="../ptr/macro.addr_of.html" title="macro std::ptr::addr_of"><code>ptr::addr_of!</code></a> (for <code>*const T</code>) and <a href="../ptr/macro.addr_of_mut.html" title="macro std::ptr::addr_of_mut"><code>ptr::addr_of_mut!</code></a> (for <code>*mut T</code>).
+These macros allow you to create raw pointers to fields to which you cannot
+create a reference (without causing undefined behaviour), such as an
+unaligned field. This might be necessary if packed structs or uninitialized
+memory is involved.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="attr">#[derive(Debug, Default, Copy, Clone)]
+#[repr(C, packed)]
+</span><span class="kw">struct </span>S {
+    aligned: u8,
+    unaligned: u32,
+}
+<span class="kw">let </span>s = S::default();
+<span class="kw">let </span>p = <span class="macro">std::ptr::addr_of!</span>(s.unaligned); <span class="comment">// not allowed with coercion</span></code></pre><a class="test-arrow" target="_blank" href="https://play.rust-lang.org/?code=%23!%5Ballow(unused)%5D%0Afn+main()+%7B%0A%23%5Bderive(Debug,+Default,+Copy,+Clone)%5D%0A%23%5Brepr(C,+packed)%5D%0Astruct+S+%7B%0A++++aligned:+u8,%0A++++unaligned:+u32,%0A%7D%0Alet+s+=+S::default();%0Alet+p+=+std::ptr::addr_of!(s.unaligned);+//+not+allowed+with+coercion%0A%7D&amp;edition=2021">Run</a></div>
+<h3 id="4-get-it-from-c"><a href="#4-get-it-from-c">4. Get it from C.</a></h3>
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="attr">#[allow(unused_extern_crates)]
+</span><span class="kw">extern crate </span>libc;
+
+<span class="kw">use </span>std::mem;
+
+<span class="kw">unsafe </span>{
+    <span class="kw">let </span>my_num: <span class="kw-2">*mut </span>i32 = libc::malloc(mem::size_of::&lt;i32&gt;()) <span class="kw">as </span><span class="kw-2">*mut </span>i32;
+    <span class="kw">if </span>my_num.is_null() {
+        <span class="macro">panic!</span>(<span class="string">&quot;failed to allocate memory&quot;</span>);
+    }
+    libc::free(my_num <span class="kw">as </span><span class="kw-2">*mut </span>libc::c_void);
+}</code></pre><a class="test-arrow" target="_blank" href="https://play.rust-lang.org/?code=%23!%5Ballow(unused)%5D%0A%23!%5Bfeature(rustc_private)%5D%0Afn+main()+%7B%0A%23%5Ballow(unused_extern_crates)%5D%0Aextern+crate+libc;%0A%0Ause+std::mem;%0A%0Aunsafe+%7B%0A++++let+my_num:+*mut+i32+=+libc::malloc(mem::size_of::%3Ci32%3E())+as+*mut+i32;%0A++++if+my_num.is_null()+%7B%0A++++++++panic!(%22failed+to+allocate+memory%22);%0A++++%7D%0A++++libc::free(my_num+as+*mut+libc::c_void);%0A%7D%0A%7D&amp;version=nightly&amp;edition=2021">Run</a></div>
+<p>Usually you wouldn’t literally use <code>malloc</code> and <code>free</code> from Rust,
+but C APIs hand out a lot of pointers generally, so are a common source
+of raw pointers in Rust.</p>
+</div></details></section></div></main></body></html>

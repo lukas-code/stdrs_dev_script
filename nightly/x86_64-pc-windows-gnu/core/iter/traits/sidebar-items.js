@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"mod":["accum","collect","double_ended","exact_size","iterator","marker","unchecked_iterator"]};

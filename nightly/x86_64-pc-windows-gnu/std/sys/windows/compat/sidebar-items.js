@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["const_cstr_from_bytes","init","load_synch_functions"],"macro":["ansi_str","compat_fn_optional","compat_fn_with_fallback"],"static":["INIT_TABLE_ENTRY"],"struct":["Module"]};

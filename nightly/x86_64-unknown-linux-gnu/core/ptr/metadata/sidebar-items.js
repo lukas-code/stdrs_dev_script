@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["from_raw_parts","from_raw_parts_mut","metadata"],"foreigntype":["VTable"],"struct":["DynMetadata","PtrComponents"],"trait":["Pointee"],"traitalias":["Thin"],"union":["PtrRepr"]};

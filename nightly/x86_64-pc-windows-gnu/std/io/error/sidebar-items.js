@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["ErrorData","ErrorKind"],"fn":["_assert_error_is_sync_send"],"macro":["const_io_error"],"mod":["repr_bitpacked"],"struct":["Custom","Error","SimpleMessage"],"type":["RawOsError","Result"]};

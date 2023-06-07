@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"macro":["forward_iterator","is_empty","iterator","len","zst_set_len","zst_shrink"]};

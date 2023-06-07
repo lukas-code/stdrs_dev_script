@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["BenchMode","ColorConfig","OutputFormat","RunIgnored","RunStrategy","ShouldPanic"],"struct":["Options"]};

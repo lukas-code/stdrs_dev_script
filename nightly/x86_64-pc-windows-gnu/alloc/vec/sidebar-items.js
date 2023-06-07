@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["from_elem","from_elem_in"],"mod":["cow","drain","drain_filter","in_place_collect","in_place_drop","into_iter","is_zero","partial_eq","set_len_on_drop","spec_extend","spec_from_elem","spec_from_iter","spec_from_iter_nested","splice"],"struct":["Drain","DrainFilter","IntoIter","Splice","Vec"],"trait":["ExtendFromWithinSpec"]};

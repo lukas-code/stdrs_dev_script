@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["MSG_NOSIGNAL"],"fn":["getsockopt","setsockopt","sockaddr_to_addr","sockname","to_ipv6mr_interface"],"struct":["LookupHost","TcpListener","TcpStream","UdpSocket"],"type":["IpV4MultiCastType"],"union":["SocketAddrCRepr"]};

@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["drain_array_with"],"struct":["Drain"]};

@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["_mm256_extract_epi64"]};

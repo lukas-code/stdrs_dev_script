@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["Hook"],"fn":["__rust_drop_panic","__rust_foreign_exception","__rust_panic_cleanup","__rust_start_panic","begin_panic","begin_panic_handler","default_hook","panicking","rust_panic","rust_panic_with_hook","rust_panic_without_hook","set_hook","take_hook","try","update_hook"],"mod":["panic_count"],"static":["HOOK"]};

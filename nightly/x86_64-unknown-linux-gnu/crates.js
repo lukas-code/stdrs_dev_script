@@ -1,0 +1,1 @@
+window.ALL_CRATES = ["alloc","cfg_if","compiler_builtins","core","getopts","hashbrown","libc","proc_macro","rustc_demangle","rustc_std_workspace_alloc","rustc_std_workspace_core","rustc_std_workspace_std","std","std_detect","sysroot","test","unicode_width"];

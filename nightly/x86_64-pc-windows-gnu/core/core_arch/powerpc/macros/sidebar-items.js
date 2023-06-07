@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"macro":["impl_vec_trait","test_impl"]};

@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"mod":["empty","from_fn","from_generator","once","once_with","repeat","repeat_n","repeat_with","successors"]};

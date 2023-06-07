@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["i128","i16","i32","i64","i8","less_than_5","panic_for_nonpositive_argument","u128","u16","u32","u64","u8","usize"]};

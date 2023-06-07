@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["option"],"static":["PTR"],"type":["F"]};

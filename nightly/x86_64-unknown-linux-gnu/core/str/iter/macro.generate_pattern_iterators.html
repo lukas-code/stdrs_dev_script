@@ -1,0 +1,64 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="This macro generates two public iterator structs wrapping a private internal one that makes use of the `Pattern` API."><title>generate_pattern_iterators in core::str::iter - Rust</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-2fcac8296ac587d8.css" id="mainThemeStyle"><div id="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="core" data-themes="" data-resource-suffix="" data-rustdoc-version="1.72.0-nightly (b2b34bd83 2023-06-06)" data-search-js="search-4926e5fc22a5646a.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-8c76f75bfb6bd192.css" data-theme-light-css="light-0f8c037637f9eb3e.css" data-theme-dark-css="dark-1097f8e92a01e3cf.css" data-theme-ayu-css="ayu-614652228113ac93.css" ></div><script src="../../../static.files/storage-62ce34ea385b278a.js"></script><script defer src="sidebar-items.js"></script><script defer src="../../../static.files/main-48600a9606eff342.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../../static.files/light-0f8c037637f9eb3e.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../../static.files/dark-1097f8e92a01e3cf.css"><link rel="stylesheet" href="../../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"><script src="/nav.js"></script>
+</head><body class="rustdoc macro"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="logo-container" href="../../../core/index.html"><img class="rust-logo" src="../../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><h2></h2></nav><nav class="sidebar"><a class="logo-container" href="../../../core/index.html"><img class="rust-logo" src="../../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><div class="sidebar-elems"><h2><a href="index.html">In core::str::iter</a></h2></div></nav><main><div class="width-limiter"><nav class="sub"><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="main-heading"><h1>Macro <a href="../../index.html">core</a>::<wbr><a href="../index.html">str</a>::<wbr><a href="index.html">iter</a>::<wbr><a class="macro" href="#">generate_pattern_iterators</a><button id="copy-path" title="Copy item path to clipboard"><img src="../../../static.files/clipboard-7571035ce49a181d.svg" width="19" height="18" alt="Copy item path"></button></h1><span class="out-of-band"><a class="srclink" href="../../../src/core/str/iter.rs.html#412-555">source</a> · <button id="toggle-all-docs" title="collapse all docs">[<span>&#x2212;</span>]</button></span></div><pre class="rust item-decl"><span class="macro">macro_rules! </span>generate_pattern_iterators {
+    {
+        <span class="comment">// Forward iterator
+        </span>forward:
+            $(<span class="attr">#[<span class="macro-nonterminal">$forward_iterator_attribute</span>:meta]</span>)*
+            <span class="kw">struct </span><span class="macro-nonterminal">$forward_iterator</span>:ident;
+
+        <span class="comment">// Reverse iterator
+        </span>reverse:
+            $(<span class="attr">#[<span class="macro-nonterminal">$reverse_iterator_attribute</span>:meta]</span>)*
+            <span class="kw">struct </span><span class="macro-nonterminal">$reverse_iterator</span>:ident;
+
+        <span class="comment">// Stability of all generated items
+        </span>stability:
+            $(<span class="attr">#[<span class="macro-nonterminal">$common_stability_attribute</span>:meta]</span>)*
+
+        <span class="comment">// Internal almost-iterator that is being delegated to
+        </span>internal:
+            <span class="macro-nonterminal">$internal_iterator</span>:ident yielding (<span class="macro-nonterminal">$iterty</span>:ty);
+
+        <span class="comment">// Kind of delegation - either single ended or double ended
+        </span>delegate $(<span class="macro-nonterminal">$t</span>:tt)*
+    } =&gt; { ... };
+    {
+        double ended; with $(<span class="attr">#[<span class="macro-nonterminal">$common_stability_attribute</span>:meta]</span>)<span class="kw-2">*</span>,
+                           <span class="macro-nonterminal">$forward_iterator</span>:ident,
+                           <span class="macro-nonterminal">$reverse_iterator</span>:ident, <span class="macro-nonterminal">$iterty</span>:ty
+    } =&gt; { ... };
+    {
+        single ended; with $(<span class="attr">#[<span class="macro-nonterminal">$common_stability_attribute</span>:meta]</span>)<span class="kw-2">*</span>,
+                           <span class="macro-nonterminal">$forward_iterator</span>:ident,
+                           <span class="macro-nonterminal">$reverse_iterator</span>:ident, <span class="macro-nonterminal">$iterty</span>:ty
+    } =&gt; { ... };
+}</pre><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>This macro generates two public iterator structs
+wrapping a private internal one that makes use of the <code>Pattern</code> API.</p>
+<p>For all patterns <code>P: Pattern&lt;'a&gt;</code> the following items will be
+generated (generics omitted):</p>
+<p>struct $forward_iterator($internal_iterator);
+struct $reverse_iterator($internal_iterator);</p>
+<p>impl Iterator for $forward_iterator
+{ /* internal ends up calling Searcher::next_match() */ }</p>
+<p>impl DoubleEndedIterator for $forward_iterator
+where P::Searcher: DoubleEndedSearcher
+{ /* internal ends up calling Searcher::next_match_back() */ }</p>
+<p>impl Iterator for $reverse_iterator
+where P::Searcher: ReverseSearcher
+{ /* internal ends up calling Searcher::next_match_back() */ }</p>
+<p>impl DoubleEndedIterator for $reverse_iterator
+where P::Searcher: DoubleEndedSearcher
+{ /* internal ends up calling Searcher::next_match() */ }</p>
+<p>The internal one is defined outside the macro, and has almost the same
+semantic as a DoubleEndedIterator by delegating to <code>pattern::Searcher</code> and
+<code>pattern::ReverseSearcher</code> for both forward and reverse iteration.</p>
+<p>“Almost”, because a <code>Searcher</code> and a <code>ReverseSearcher</code> for a given
+<code>Pattern</code> might not return the same elements, so actually implementing
+<code>DoubleEndedIterator</code> for it would be incorrect.
+(See the docs in <code>str::pattern</code> for more details)</p>
+<p>However, the internal struct still represents a single ended iterator from
+either end, and depending on pattern is also a valid double ended iterator,
+so the two wrapper structs implement <code>Iterator</code>
+and <code>DoubleEndedIterator</code> depending on the concrete pattern type, leading
+to the complex impls seen above.</p>
+</div></details></section></div></main></body></html>

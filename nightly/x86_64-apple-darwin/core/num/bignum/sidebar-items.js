@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["SMALL_POW5"],"macro":["define_bignum","impl_full_ops"],"mod":["tests"],"struct":["Big32x40"],"trait":["FullOps"],"type":["Digit32"]};

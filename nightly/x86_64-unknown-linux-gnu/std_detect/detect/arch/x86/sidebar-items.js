@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["Feature"],"mod":["__is_feature_detected"]};

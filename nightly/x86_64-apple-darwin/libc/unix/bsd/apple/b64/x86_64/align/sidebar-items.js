@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"struct":["max_align_t"]};

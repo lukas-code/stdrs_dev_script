@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["IpAddr","Ipv6MulticastScope"],"struct":["Ipv4Addr","Ipv6Addr"]};

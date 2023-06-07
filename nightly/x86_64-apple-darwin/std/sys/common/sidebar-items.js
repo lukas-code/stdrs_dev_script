@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"mod":["alloc","small_c_string","thread_local"]};

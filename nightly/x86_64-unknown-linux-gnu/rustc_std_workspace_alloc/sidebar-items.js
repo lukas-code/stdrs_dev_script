@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"macro":["__rust_force_expr","format","vec"],"mod":["__export","alloc","borrow","boxed","collections","ffi","fmt","rc","slice","str","string","sync","task","vec"]};

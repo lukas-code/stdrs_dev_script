@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["HEAP_ZERO_MEMORY"],"fn":["GetProcessHeap","HeapAlloc","HeapFree","HeapReAlloc","allocate","get_process_heap","init_or_get_process_heap"],"static":["HEAP"],"struct":["Header"]};

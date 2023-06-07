@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["NOT_FILE_ERROR"],"fn":["copy","remove_dir_all","remove_dir_all_recursive","try_exists"]};

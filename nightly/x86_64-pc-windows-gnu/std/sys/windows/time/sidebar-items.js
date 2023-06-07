@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["INTERVALS_PER_SEC","INTERVALS_TO_UNIX_EPOCH","NANOS_PER_SEC","UNIX_EPOCH"],"fn":["checked_dur2intervals","intervals2dur"],"mod":["perf_counter"],"struct":["Instant","SystemTime"]};

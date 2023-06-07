@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["AllocInit"],"fn":["alloc_guard","capacity_overflow","finish_grow","handle_reserve"],"struct":["RawVec"]};

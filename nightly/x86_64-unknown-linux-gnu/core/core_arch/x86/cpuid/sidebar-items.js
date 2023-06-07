@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["__cpuid","__cpuid_count","__get_cpuid_max","has_cpuid"],"struct":["CpuidResult"]};

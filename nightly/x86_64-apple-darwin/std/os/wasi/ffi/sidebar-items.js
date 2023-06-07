@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"mod":["os_str"],"trait":["OsStrExt","OsStringExt"]};

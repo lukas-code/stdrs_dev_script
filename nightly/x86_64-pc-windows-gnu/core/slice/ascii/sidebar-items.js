@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["contains_nonascii","is_ascii","is_ascii_simple"],"struct":["EscapeAscii","EscapeByte"]};

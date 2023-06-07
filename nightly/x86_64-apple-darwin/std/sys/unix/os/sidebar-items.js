@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["PATH_SEPARATOR","TMPBUF_SZ"],"fn":["chdir","current_exe","env","env_read_lock","environ","errno","errno_location","error_string","exit","getcwd","getenv","getpid","getppid","home_dir","join_paths","page_size","set_errno","setenv","split_paths","temp_dir","unsetenv"],"static":["ENV_LOCK"],"struct":["Env","JoinPathsError","SplitPaths"]};

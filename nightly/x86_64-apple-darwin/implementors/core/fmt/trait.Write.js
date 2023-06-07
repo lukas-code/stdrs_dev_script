@@ -1,0 +1,9 @@
+(function() {var implementors = {
+"alloc":[["impl <a class=\"trait\" href=\"alloc/fmt/trait.Write.html\" title=\"trait alloc::fmt::Write\">Write</a> for <a class=\"struct\" href=\"alloc/string/struct.String.html\" title=\"struct alloc::string::String\">String</a>"]],
+"core":[],
+"rustc_demangle":[["impl&lt;F: <a class=\"trait\" href=\"core/fmt/trait.Write.html\" title=\"trait core::fmt::Write\">Write</a>&gt; <a class=\"trait\" href=\"core/fmt/trait.Write.html\" title=\"trait core::fmt::Write\">Write</a> for <a class=\"struct\" href=\"rustc_demangle/struct.SizeLimitedFmtAdapter.html\" title=\"struct rustc_demangle::SizeLimitedFmtAdapter\">SizeLimitedFmtAdapter</a>&lt;F&gt;"]],
+"rustc_std_workspace_alloc":[],
+"rustc_std_workspace_core":[],
+"rustc_std_workspace_std":[],
+"std":[["impl&lt;T&gt; <a class=\"trait\" href=\"std/fmt/trait.Write.html\" title=\"trait std::fmt::Write\">Write</a> for <a class=\"struct\" href=\"std/error/struct.Indented.html\" title=\"struct std::error::Indented\">Indented</a>&lt;'_, T&gt;<span class=\"where fmt-newline\">where\n    T: <a class=\"trait\" href=\"std/fmt/trait.Write.html\" title=\"trait std::fmt::Write\">Write</a>,</span>"],["impl&lt;T: <a class=\"trait\" href=\"std/io/trait.Write.html\" title=\"trait std::io::Write\">Write</a> + ?<a class=\"trait\" href=\"std/marker/trait.Sized.html\" title=\"trait std::marker::Sized\">Sized</a>&gt; <a class=\"trait\" href=\"std/fmt/trait.Write.html\" title=\"trait std::fmt::Write\">Write</a> for Adapter&lt;'_, T&gt;"],["impl <a class=\"trait\" href=\"std/fmt/trait.Write.html\" title=\"trait std::fmt::Write\">Write</a> for <a class=\"struct\" href=\"std/ffi/os_str/struct.OsString.html\" title=\"struct std::ffi::os_str::OsString\">OsString</a>"]]
+};if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()

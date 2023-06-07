@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["xxpermdi"],"macro":["vec_xxpermdi"],"trait":["VectorPermDI"]};

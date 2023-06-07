@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["fdopendir","get_openat_fn","has_openat","openat","unlinkat"]};

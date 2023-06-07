@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"macro":["static_assert_imm8_scale","static_assert_mantissas_sae","static_assert_rounding","static_assert_sae"]};

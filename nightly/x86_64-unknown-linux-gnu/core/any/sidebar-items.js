@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["request_by_type_tag","request_ref","request_value","type_name","type_name_of_val"],"mod":["tags"],"struct":["Demand","TaggedOption","TypeId"],"trait":["Any","Erased","Provider"]};

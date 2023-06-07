@@ -1,0 +1,79 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Platform-specific intrinsics for the `wasm32` platform."><title>core::core_arch::arch::wasm32 - Rust</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../../static.files/rustdoc-2fcac8296ac587d8.css" id="mainThemeStyle"><div id="rustdoc-vars" data-root-path="../../../../" data-static-root-path="../../../../static.files/" data-current-crate="core" data-themes="" data-resource-suffix="" data-rustdoc-version="1.72.0-nightly (b2b34bd83 2023-06-06)" data-search-js="search-4926e5fc22a5646a.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-8c76f75bfb6bd192.css" data-theme-light-css="light-0f8c037637f9eb3e.css" data-theme-dark-css="dark-1097f8e92a01e3cf.css" data-theme-ayu-css="ayu-614652228113ac93.css" ></div><script src="../../../../static.files/storage-62ce34ea385b278a.js"></script><script defer src="../../../../static.files/main-48600a9606eff342.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../../../static.files/light-0f8c037637f9eb3e.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../../../static.files/dark-1097f8e92a01e3cf.css"><link rel="stylesheet" href="../../../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../../static.files/favicon-2c020d218678b618.svg"><script src="/nav.js"></script>
+</head><body class="rustdoc mod"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="logo-container" href="../../../../core/index.html"><img class="rust-logo" src="../../../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><h2></h2></nav><nav class="sidebar"><a class="logo-container" href="../../../../core/index.html"><img class="rust-logo" src="../../../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><h2 class="location"><a href="#">Module wasm32</a></h2><div class="sidebar-elems"></div></nav><main><div class="width-limiter"><nav class="sub"><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="main-heading"><h1>Module <a href="../../../index.html">core</a>::<wbr><a href="../../index.html">core_arch</a>::<wbr><a href="../index.html">arch</a>::<wbr><a class="mod" href="#">wasm32</a><button id="copy-path" title="Copy item path to clipboard"><img src="../../../../static.files/clipboard-7571035ce49a181d.svg" width="19" height="18" alt="Copy item path"></button></h1><span class="out-of-band"><span class="since" title="Stable since Rust version 1.33.0">1.33.0</span> · <a class="srclink" href="../../../../src/core/stdarch/crates/core_arch/src/mod.rs.html#188">source</a> · <button id="toggle-all-docs" title="collapse all docs">[<span>&#x2212;</span>]</button></span></div><span class="item-info"><div class="stab portability">Available on <strong>WebAssembly</strong> only.</div></span><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Platform-specific intrinsics for the <code>wasm32</code> platform.</p>
+<p>This module provides intrinsics specific to the WebAssembly
+architecture. Here you’ll find intrinsics specific to WebAssembly that
+aren’t otherwise surfaced somewhere in a cross-platform abstraction of
+<code>std</code>, and you’ll also find functions for leveraging WebAssembly
+proposals such as <a href="https://github.com/webassembly/threads">atomics</a> and <a href="https://github.com/webassembly/simd">simd</a>.</p>
+<p>Intrinsics in the <code>wasm32</code> module are modeled after the WebAssembly
+instructions that they represent. Most functions are named after the
+instruction they intend to correspond to, and the arguments/results
+correspond to the type signature of the instruction itself. Stable
+WebAssembly instructions are <a href="https://webassembly.github.io/spec/core/valid/instructions.html">documented online</a>.</p>
+<p>If a proposal is not yet stable in WebAssembly itself then the functions
+within this function may be unstable and require the nightly channel of
+Rust to use. As the proposal itself stabilizes the intrinsics in this
+module should stabilize as well.</p>
+<p>See the <a href="../index.html">module documentation</a> for general information
+about the <code>arch</code> module and platform intrinsics.</p>
+<h3 id="atomics"><a href="#atomics">Atomics</a></h3>
+<p>The <a href="https://github.com/webassembly/threads">threads proposal</a> for WebAssembly adds a number of
+instructions for dealing with multithreaded programs. Most instructions
+added in the <a href="https://github.com/webassembly/threads">atomics</a> proposal are exposed in Rust through the
+<code>std::sync::atomic</code> module. Some instructions, however, don’t have
+direct equivalents in Rust so they’re exposed here instead.</p>
+<p>Note that the instructions added in the <a href="https://github.com/webassembly/threads">atomics</a> proposal can work in
+either a context with a shared wasm memory and without. These intrinsics
+are always available in the standard library, but you likely won’t be
+able to use them too productively unless you recompile the standard
+library (and all your code) with <code>-Ctarget-feature=+atomics</code>.</p>
+<p>It’s also worth pointing out that multi-threaded WebAssembly and its
+story in Rust is still in a somewhat “early days” phase as of the time
+of this writing. Pieces should mostly work but it generally requires a
+good deal of manual setup. At this time it’s not as simple as “just call
+<code>std::thread::spawn</code>”, but it will hopefully get there one day!</p>
+<h3 id="simd"><a href="#simd">SIMD</a></h3>
+<p>The <a href="https://github.com/webassembly/simd">simd proposal</a> for WebAssembly added a new <code>v128</code> type for a
+128-bit SIMD register. It also added a large array of instructions to
+operate on the <code>v128</code> type to perform data processing. Using SIMD on
+wasm is intended to be similar to as you would on <code>x86_64</code>, for example.
+You’d write a function such as:</p>
+
+<div class="example-wrap ignore"><a href="#" class="tooltip" title="This example is not tested">ⓘ</a><pre class="rust rust-example-rendered"><code><span class="attr">#[cfg(target_arch = <span class="string">&quot;wasm32&quot;</span>)]
+#[target_feature(enable = <span class="string">&quot;simd128&quot;</span>)]
+</span><span class="kw">unsafe fn </span>uses_simd() {
+    <span class="kw">use </span>std::arch::wasm32::<span class="kw-2">*</span>;
+    <span class="comment">// ...
+</span>}</code></pre><a class="test-arrow" target="_blank" href="https://play.rust-lang.org/?code=%23!%5Ballow(unused)%5D%0Afn+main()+%7B%0A%23%5Bcfg(target_arch+=+%22wasm32%22)%5D%0A%23%5Btarget_feature(enable+=+%22simd128%22)%5D%0Aunsafe+fn+uses_simd()+%7B%0A++++use+std::arch::wasm32::*;%0A++++//+...%0A%7D%0A%7D&amp;edition=2021">Run</a></div>
+<p>Unlike <code>x86_64</code>, however, WebAssembly does not currently have dynamic
+detection at runtime as to whether SIMD is supported (this is one of the
+motivators for the <a href="https://github.com/webassembly/conditional-sections">conditional sections</a> and <a href="https://github.com/WebAssembly/feature-detection">feature
+detection</a> proposals, but that is still pretty early days). This means
+that your binary will either have SIMD and can only run on engines
+which support SIMD, or it will not have SIMD at all. For compatibility
+the standard library itself does not use any SIMD internally.
+Determining how best to ship your WebAssembly binary with SIMD is
+largely left up to you as it can be pretty nuanced depending on
+your situation.</p>
+<p>To enable SIMD support at compile time you need to do one of two things:</p>
+<ul>
+<li>
+<p>First you can annotate functions with <code>#[target_feature(enable = &quot;simd128&quot;)]</code>. This causes just that one function to have SIMD support
+available to it, and intrinsics will get inlined as usual in this
+situation.</p>
+</li>
+<li>
+<p>Second you can compile your program with <code>-Ctarget-feature=+simd128</code>.
+This compilation flag blanket enables SIMD support for your entire
+compilation. Note that this does not include the standard library
+unless you <a href="https://doc.rust-lang.org/nightly/cargo/reference/unstable.html#build-std">recompile the standard library</a>.</p>
+</li>
+</ul>
+<p>If you enable SIMD via either of these routes then you’ll have a
+WebAssembly binary that uses SIMD instructions, and you’ll need to ship
+that accordingly. Also note that if you call SIMD intrinsics but don’t
+enable SIMD via either of these mechanisms, you’ll still have SIMD
+generated in your program. This means to generate a binary without SIMD
+you’ll need to avoid both options above plus calling into any intrinsics
+in this module.</p>
+</div></details><h2 id="reexports" class="small-section-header"><a href="#reexports">Re-exports</a></h2><ul class="item-table"><li><div class="item-name"><code>pub use crate::core_arch::<a class="mod" href="../../wasm32/index.html" title="mod core::core_arch::wasm32">wasm32</a>::*;</code></div><div class="desc docblock-short"><span class="stab unstable" title="">Experimental</span><span class="stab portability" title="Available on `target_family=&quot;wasm&quot;` only"><code>target_family="wasm"</code></span></div></li></ul></section></div></main></body></html>

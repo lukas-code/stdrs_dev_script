@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["handle_is_console","is_terminal","msys_tty_on"],"struct":["IoSlice","IoSliceMut"]};

@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"macro":["impl_is_terminal"],"struct":["BorrowedHandle","HandleOrInvalid","HandleOrNull","InvalidHandleError","NullHandleError","OwnedHandle"],"trait":["AsHandle"]};

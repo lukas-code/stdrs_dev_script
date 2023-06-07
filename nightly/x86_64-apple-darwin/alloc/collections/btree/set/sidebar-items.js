@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["ITER_PERFORMANCE_TIPPING_SIZE_DIFF"],"enum":["DifferenceInner","IntersectionInner"],"struct":["BTreeSet","Difference","DrainFilter","Intersection","IntoIter","Iter","Range","SymmetricDifference","Union"]};

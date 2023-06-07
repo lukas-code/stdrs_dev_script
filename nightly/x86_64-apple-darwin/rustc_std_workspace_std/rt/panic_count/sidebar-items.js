@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["ALWAYS_ABORT_FLAG"],"enum":["MustAbort"],"fn":["count_is_zero","decrease","finished_panic_hook","get_count","increase","set_always_abort"]};

@@ -1,0 +1,173 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="The “main macro” used for defining intrinsics."><title>intrinsics in compiler_builtins::macros - Rust</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-2fcac8296ac587d8.css" id="mainThemeStyle"><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="compiler_builtins" data-themes="" data-resource-suffix="" data-rustdoc-version="1.72.0-nightly (b2b34bd83 2023-06-06)" data-search-js="search-4926e5fc22a5646a.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-8c76f75bfb6bd192.css" data-theme-light-css="light-0f8c037637f9eb3e.css" data-theme-dark-css="dark-1097f8e92a01e3cf.css" data-theme-ayu-css="ayu-614652228113ac93.css" ></div><script src="../../static.files/storage-62ce34ea385b278a.js"></script><script defer src="sidebar-items.js"></script><script defer src="../../static.files/main-48600a9606eff342.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../static.files/light-0f8c037637f9eb3e.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../static.files/dark-1097f8e92a01e3cf.css"><link rel="stylesheet" href="../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"><script src="/nav.js"></script>
+</head><body class="rustdoc macro"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="logo-container" href="../../compiler_builtins/index.html"><img class="rust-logo" src="../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><h2></h2></nav><nav class="sidebar"><a class="logo-container" href="../../compiler_builtins/index.html"><img class="rust-logo" src="../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><div class="sidebar-elems"><h2><a href="index.html">In compiler_builtins::macros</a></h2></div></nav><main><div class="width-limiter"><nav class="sub"><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="main-heading"><h1>Macro <a href="../index.html">compiler_builtins</a>::<wbr><a href="index.html">macros</a>::<wbr><a class="macro" href="#">intrinsics</a><button id="copy-path" title="Copy item path to clipboard"><img src="../../static.files/clipboard-7571035ce49a181d.svg" width="19" height="18" alt="Copy item path"></button></h1><span class="out-of-band"><a class="srclink" href="../../src/compiler_builtins/macros.rs.html#70-532">source</a> · <button id="toggle-all-docs" title="collapse all docs">[<span>&#x2212;</span>]</button></span></div><pre class="rust item-decl"><span class="macro">macro_rules! </span>intrinsics {
+    () =&gt; { ... };
+    (
+        <span class="attr">#[cfg_attr(<span class="macro-nonterminal">$e</span>:meta, $(<span class="macro-nonterminal">$attr</span>:tt)<span class="kw-2">*</span>)]
+        </span>$(<span class="attr">#[$(<span class="macro-nonterminal">$attrs</span>:tt)<span class="kw-2">*</span>]</span>)*
+        <span class="kw">pub extern </span><span class="macro-nonterminal">$abi</span>:tt <span class="kw">fn </span><span class="macro-nonterminal">$name</span>:ident( $(<span class="macro-nonterminal">$argname</span>:ident: <span class="macro-nonterminal">$ty</span>:ty),* ) $(-&gt; <span class="macro-nonterminal">$ret</span>:ty)<span class="question-mark">? </span>{
+            $(<span class="macro-nonterminal">$body</span>:tt)*
+        }
+        $(<span class="macro-nonterminal">$rest</span>:tt)*
+    ) =&gt; { ... };
+    (
+        <span class="attr">#[cfg_attr(<span class="macro-nonterminal">$e</span>:meta, $(<span class="macro-nonterminal">$attr</span>:tt)<span class="kw-2">*</span>)]
+        </span>$(<span class="attr">#[$(<span class="macro-nonterminal">$attrs</span>:tt)<span class="kw-2">*</span>]</span>)*
+        <span class="kw">pub unsafe extern </span><span class="macro-nonterminal">$abi</span>:tt <span class="kw">fn </span><span class="macro-nonterminal">$name</span>:ident( $(<span class="macro-nonterminal">$argname</span>:ident: <span class="macro-nonterminal">$ty</span>:ty),* ) $(-&gt; <span class="macro-nonterminal">$ret</span>:ty)<span class="question-mark">? </span>{
+            $(<span class="macro-nonterminal">$body</span>:tt)*
+        }
+        $(<span class="macro-nonterminal">$rest</span>:tt)*
+    ) =&gt; { ... };
+    (
+        <span class="attr">#[weak]
+        </span>$(<span class="attr">#[$(<span class="macro-nonterminal">$attr</span>:tt)<span class="kw-2">*</span>]</span>)*
+        <span class="kw">pub extern </span><span class="macro-nonterminal">$abi</span>:tt <span class="kw">fn </span><span class="macro-nonterminal">$name</span>:ident( $(<span class="macro-nonterminal">$argname</span>:ident:  <span class="macro-nonterminal">$ty</span>:ty),* ) $(-&gt; <span class="macro-nonterminal">$ret</span>:ty)<span class="question-mark">? </span>{
+            $(<span class="macro-nonterminal">$body</span>:tt)*
+        }
+
+        $(<span class="macro-nonterminal">$rest</span>:tt)*
+    ) =&gt; { ... };
+    (
+        <span class="attr">#[weak]
+        </span>$(<span class="attr">#[$(<span class="macro-nonterminal">$attr</span>:tt)<span class="kw-2">*</span>]</span>)*
+        <span class="kw">pub unsafe extern </span><span class="macro-nonterminal">$abi</span>:tt <span class="kw">fn </span><span class="macro-nonterminal">$name</span>:ident( $(<span class="macro-nonterminal">$argname</span>:ident:  <span class="macro-nonterminal">$ty</span>:ty),* ) $(-&gt; <span class="macro-nonterminal">$ret</span>:ty)<span class="question-mark">? </span>{
+            $(<span class="macro-nonterminal">$body</span>:tt)*
+        }
+
+        $(<span class="macro-nonterminal">$rest</span>:tt)*
+    ) =&gt; { ... };
+    (
+        <span class="attr">#[maybe_use_optimized_c_shim]
+        </span>$(<span class="attr">#[$(<span class="macro-nonterminal">$attr</span>:tt)<span class="kw-2">*</span>]</span>)*
+        <span class="kw">pub extern </span><span class="macro-nonterminal">$abi</span>:tt <span class="kw">fn </span><span class="macro-nonterminal">$name</span>:ident( $(<span class="macro-nonterminal">$argname</span>:ident:  <span class="macro-nonterminal">$ty</span>:ty),* ) $(-&gt; <span class="macro-nonterminal">$ret</span>:ty)<span class="question-mark">? </span>{
+            $(<span class="macro-nonterminal">$body</span>:tt)*
+        }
+
+        $(<span class="macro-nonterminal">$rest</span>:tt)*
+    ) =&gt; { ... };
+    (
+        <span class="attr">#[aapcs_on_arm]
+        </span>$(<span class="attr">#[$(<span class="macro-nonterminal">$attr</span>:tt)<span class="kw-2">*</span>]</span>)*
+        <span class="kw">pub extern </span><span class="macro-nonterminal">$abi</span>:tt <span class="kw">fn </span><span class="macro-nonterminal">$name</span>:ident( $(<span class="macro-nonterminal">$argname</span>:ident:  <span class="macro-nonterminal">$ty</span>:ty),* ) $(-&gt; <span class="macro-nonterminal">$ret</span>:ty)<span class="question-mark">? </span>{
+            $(<span class="macro-nonterminal">$body</span>:tt)*
+        }
+
+        $(<span class="macro-nonterminal">$rest</span>:tt)*
+    ) =&gt; { ... };
+    (
+        <span class="attr">#[unadjusted_on_win64]
+        </span>$(<span class="attr">#[$(<span class="macro-nonterminal">$attr</span>:tt)<span class="kw-2">*</span>]</span>)*
+        <span class="kw">pub extern </span><span class="macro-nonterminal">$abi</span>:tt <span class="kw">fn </span><span class="macro-nonterminal">$name</span>:ident( $(<span class="macro-nonterminal">$argname</span>:ident:  <span class="macro-nonterminal">$ty</span>:ty),* ) $(-&gt; <span class="macro-nonterminal">$ret</span>:ty)<span class="question-mark">? </span>{
+            $(<span class="macro-nonterminal">$body</span>:tt)*
+        }
+
+        $(<span class="macro-nonterminal">$rest</span>:tt)*
+    ) =&gt; { ... };
+    (
+        <span class="attr">#[win64_128bit_abi_hack]
+        </span>$(<span class="attr">#[$(<span class="macro-nonterminal">$attr</span>:tt)<span class="kw-2">*</span>]</span>)*
+        <span class="kw">pub extern </span><span class="macro-nonterminal">$abi</span>:tt <span class="kw">fn </span><span class="macro-nonterminal">$name</span>:ident( $(<span class="macro-nonterminal">$argname</span>:ident:  <span class="macro-nonterminal">$ty</span>:ty),* ) $(-&gt; <span class="macro-nonterminal">$ret</span>:ty)<span class="question-mark">? </span>{
+            $(<span class="macro-nonterminal">$body</span>:tt)*
+        }
+
+        $(<span class="macro-nonterminal">$rest</span>:tt)*
+    ) =&gt; { ... };
+    (
+        <span class="attr">#[arm_aeabi_alias = <span class="macro-nonterminal">$alias</span>:ident]
+        </span>$(<span class="attr">#[$(<span class="macro-nonterminal">$attr</span>:tt)<span class="kw-2">*</span>]</span>)*
+        <span class="kw">pub extern </span><span class="macro-nonterminal">$abi</span>:tt <span class="kw">fn </span><span class="macro-nonterminal">$name</span>:ident( $(<span class="macro-nonterminal">$argname</span>:ident:  <span class="macro-nonterminal">$ty</span>:ty),* ) $(-&gt; <span class="macro-nonterminal">$ret</span>:ty)<span class="question-mark">? </span>{
+            $(<span class="macro-nonterminal">$body</span>:tt)*
+        }
+
+        $(<span class="macro-nonterminal">$rest</span>:tt)*
+    ) =&gt; { ... };
+    (
+        <span class="attr">#[mem_builtin]
+        </span>$(<span class="attr">#[$(<span class="macro-nonterminal">$attr</span>:tt)<span class="kw-2">*</span>]</span>)*
+        <span class="kw">pub unsafe extern </span><span class="macro-nonterminal">$abi</span>:tt <span class="kw">fn </span><span class="macro-nonterminal">$name</span>:ident( $(<span class="macro-nonterminal">$argname</span>:ident:  <span class="macro-nonterminal">$ty</span>:ty),* ) $(-&gt; <span class="macro-nonterminal">$ret</span>:ty)<span class="question-mark">? </span>{
+            $(<span class="macro-nonterminal">$body</span>:tt)*
+        }
+
+        $(<span class="macro-nonterminal">$rest</span>:tt)*
+    ) =&gt; { ... };
+    (
+        <span class="attr">#[naked]
+        </span>$(<span class="attr">#[$(<span class="macro-nonterminal">$attr</span>:tt)<span class="kw-2">*</span>]</span>)*
+        <span class="kw">pub unsafe extern </span><span class="macro-nonterminal">$abi</span>:tt <span class="kw">fn </span><span class="macro-nonterminal">$name</span>:ident( $(<span class="macro-nonterminal">$argname</span>:ident:  <span class="macro-nonterminal">$ty</span>:ty),* ) $(-&gt; <span class="macro-nonterminal">$ret</span>:ty)<span class="question-mark">? </span>{
+            $(<span class="macro-nonterminal">$body</span>:tt)*
+        }
+
+        $(<span class="macro-nonterminal">$rest</span>:tt)*
+    ) =&gt; { ... };
+    (
+        <span class="attr">#[avr_skip]
+        </span>$(<span class="attr">#[$(<span class="macro-nonterminal">$attr</span>:tt)<span class="kw-2">*</span>]</span>)*
+        <span class="kw">pub extern </span><span class="macro-nonterminal">$abi</span>:tt <span class="kw">fn </span><span class="macro-nonterminal">$name</span>:ident( $(<span class="macro-nonterminal">$argname</span>:ident:  <span class="macro-nonterminal">$ty</span>:ty),* ) $(-&gt; <span class="macro-nonterminal">$ret</span>:ty)<span class="question-mark">? </span>{
+            $(<span class="macro-nonterminal">$body</span>:tt)*
+        }
+
+        $(<span class="macro-nonterminal">$rest</span>:tt)*
+    ) =&gt; { ... };
+    (
+        $(<span class="attr">#[$(<span class="macro-nonterminal">$attr</span>:tt)<span class="kw-2">*</span>]</span>)*
+        <span class="kw">pub extern </span><span class="macro-nonterminal">$abi</span>:tt <span class="kw">fn </span><span class="macro-nonterminal">$name</span>:ident( $(<span class="macro-nonterminal">$argname</span>:ident:  <span class="macro-nonterminal">$ty</span>:ty),* ) $(-&gt; <span class="macro-nonterminal">$ret</span>:ty)<span class="question-mark">? </span>{
+            $(<span class="macro-nonterminal">$body</span>:tt)*
+        }
+
+        $(<span class="macro-nonterminal">$rest</span>:tt)*
+    ) =&gt; { ... };
+    (
+        $(<span class="attr">#[$(<span class="macro-nonterminal">$attr</span>:tt)<span class="kw-2">*</span>]</span>)*
+        <span class="kw">pub unsafe extern </span><span class="macro-nonterminal">$abi</span>:tt <span class="kw">fn </span><span class="macro-nonterminal">$name</span>:ident( $(<span class="macro-nonterminal">$argname</span>:ident:  <span class="macro-nonterminal">$ty</span>:ty),* ) $(-&gt; <span class="macro-nonterminal">$ret</span>:ty)<span class="question-mark">? </span>{
+            $(<span class="macro-nonterminal">$body</span>:tt)*
+        }
+
+        $(<span class="macro-nonterminal">$rest</span>:tt)*
+    ) =&gt; { ... };
+}</pre><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>The “main macro” used for defining intrinsics.</p>
+<p>The compiler-builtins library is super platform-specific with tons of crazy
+little tweaks for various platforms. As a result it <em>could</em> involve a lot of
+#<a href="../../core/macro.cfg.html" title="macro core::cfg">cfg</a> and macro soup, but the intention is that this macro alleviates a lot
+of that complexity. Ideally this macro has all the weird ABI things
+platforms need and elsewhere in this library it just looks like normal Rust
+code.</p>
+<p>When the weak-intrinsics feature is enabled, all intrinsics functions are
+marked with #[linkage = “weak”] so that they can be replaced by another
+implementation at link time. This is particularly useful for mixed Rust/C++
+binaries that want to use the C++ intrinsics, otherwise linking against the
+Rust stdlib will replace those from the compiler-rt library.</p>
+<p>This macro is structured to be invoked with a bunch of functions that looks
+like:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="macro">intrinsics! </span>{
+    <span class="kw">pub extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn </span>foo(a: i32) -&gt; u32 {
+        <span class="comment">// ...
+    </span>}
+
+    <span class="attr">#[nonstandard_attribute]
+    </span><span class="kw">pub extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn </span>bar(a: i32) -&gt; u32 {
+        <span class="comment">// ...
+    </span>}
+}</code></pre></div>
+<p>Each function is defined in a manner that looks like a normal Rust function.
+The macro then accepts a few nonstandard attributes that can decorate
+various functions. Each of the attributes is documented below with what it
+can do, and each of them slightly tweaks how further expansion happens.</p>
+<p>A quick overview of attributes supported right now are:</p>
+<ul>
+<li><code>weak</code> - indicates that the function should always be given weak linkage.
+This attribute must come before other attributes, as the other attributes
+will generate the final output function and need to have <code>weak</code> modify
+them.</li>
+<li><code>maybe_use_optimized_c_shim</code> - indicates that the Rust implementation is
+ignored if an optimized C version was compiled.</li>
+<li><code>aapcs_on_arm</code> - forces the ABI of the function to be <code>&quot;aapcs&quot;</code> on ARM and
+the specified ABI everywhere else.</li>
+<li><code>unadjusted_on_win64</code> - like <code>aapcs_on_arm</code> this switches to the
+<code>&quot;unadjusted&quot;</code> abi on Win64 and the specified abi elsewhere.</li>
+<li><code>win64_128bit_abi_hack</code> - this attribute is used for 128-bit integer
+intrinsics where the ABI is slightly tweaked on Windows platforms, but
+it’s a normal ABI elsewhere for returning a 128 bit integer.</li>
+<li><code>arm_aeabi_alias</code> - handles the “aliasing” of various intrinsics on ARM
+their otherwise typical names to other prefixed ones.</li>
+</ul>
+</div></details></section></div></main></body></html>

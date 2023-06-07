@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["break_patterns","choose_pivot","find_streak","heapsort","insert_head","insert_tail","insertion_sort_shift_left","insertion_sort_shift_right","merge","merge_sort","partial_insertion_sort","partition","partition_equal","partition_in_blocks","provide_sorted_batch","quicksort","recurse"],"struct":["InsertionHole","TimSortRun"]};

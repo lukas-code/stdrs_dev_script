@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["fdreaddir","is_dir","openat_nofollow_dironly","remove_dir_all","remove_dir_all_modern","remove_dir_all_recursive"],"mod":["macos_weak"]};

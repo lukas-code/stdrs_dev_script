@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["stdout"],"mod":["color","terminfo"],"trait":["Terminal"],"type":["StdoutTerminal"]};
